@@ -7,14 +7,11 @@
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
-        /* Font chữ Serif mang phong cách hoài cổ, nghệ thuật */
         body {
             font-family: "Times New Roman", Times, Georgia, serif;
             background-color: #FAF6EE; /* Màu nền giấy kem xuyến chỉ */
             color: #1A1A1A;
         }
-
-        /* Lưới 4 thành viên */
         .member-grid {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
@@ -22,8 +19,6 @@
             max-width: 1150px;
             margin: 0 auto;
         }
-
-        /* Thẻ thành viên phong cách Vintage */
         .card {
             background: #FFFDF9;
             border: 2px solid #E5D5C0;
@@ -42,21 +37,18 @@
             box-shadow: 0 8px 18px rgba(42, 123, 114, 0.2);
             border-color: #2A7B72;
         }
-
-        /* KHUNG ẢNH CỔ ĐIỂN - DÁNG TRANH KHẮC GỖ TO ĐẸP */
         .avatar {
-            width: 140px;            /* Tăng kích thước khung ảnh */
-            height: 160px;           /* Dáng dọc hình tranh chân dung cổ */
-            border-radius: 10px;     /* Bo góc nhẹ cổ kính */
+            width: 140px;            
+            height: 160px;           
+            border-radius: 10px;    
             object-fit: cover;
             background-color: #F3ECE0;
-            
-            /* Viền kép nghệ thuật (Đỏ son lồng Vàng đồng) */
+
             border: 3px solid #C83E2B; 
             outline: 2px solid #D4A237;
-            outline-offset: -5px;    /* Đẩy viền vàng lồng vào trong */
+            outline-offset: -5px;   
             
-            box-shadow: 0 5px 12px rgba(0, 0, 0, 0.15); /* Tạo độ nổi như bức tranh */
+            box-shadow: 0 5px 12px rgba(0, 0, 0, 0.15); 
             margin-bottom: 20px;
             transition: transform 0.3s;
         }
@@ -131,8 +123,45 @@
 
     <!-- Main Content -->
     <main class="container mx-auto px-4 py-8 flex-grow">
+        <!-- TAB 1: GIỚI THIỆU CHUNG -->
+        <section id="tab-about" class="space-y-8 max-w-4xl mx-auto">
+            <div class="text-center mb-6">
+                <h2 class="text-3xl font-bold text-[#8C2318] tracking-wider">VỀ CHÚNG MÌNH</h2>
+                <div class="w-24 h-1 bg-[#D4A237] mx-auto my-2 rounded"></div>
+                <p class="text-[#554A3E] mt-1 italic">Nơi lưu giữ hành trình học tập và kết nối các thành viên.</p>
+            </div>
 
-        <!-- TAB 1: GIỚI THIỆU THÀNH VIÊN -->
+            <!-- Khung ảnh chung của nhóm -->
+            <div class="bg-[#FFFDF9] p-6 rounded-xl shadow-md border-2 border-[#E5D5C0] text-center">
+                <h3 class="text-xl font-bold text-[#2A7B72] mb-4"></h3>
+                <!-- Đổi tên file ảnh thành nhom.jpg khi upload lên GitHub -->
+                <img src="nhom.jpg" alt="Ảnh chung của nhóm" class="group-photo mx-auto" onerror="this.src='https://placehold.co/800x400/F3ECE0/2A7B72?text=Chèn+Ảnh+Chung+Của+Nhóm+Vào+Đây+(nhom.jpg)'">
+                <p class="text-sm text-[#554A3E] mt-3 italic">"HỌC, HỌC NỮA,HỌC MÃI"</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <!-- Mục đích lập web -->
+                <div class="bg-[#FFFDF9] p-6 rounded-xl shadow-md border-2 border-[#E5D5C0]">
+                    <h3 class="text-xl font-bold text-[#8C2318] mb-3">🎯 Mục Đích Thành Lập</h3>
+                    <ul class="space-y-2 text-[#554A3E] text-sm leading-relaxed list-disc list-inside">
+                        <li>Đây là không gian chung để lưu trữ và quản lý tài liệu học tập môn Tin học của nhóm.</li>
+                        <li>Giúp các thành viên dễ dàng nộp bài, xem lại tiến độ và hỗ trợ nhau ôn tập[cite: 1].</li>
+                        <li>Xây dựng một không gian sáng tạo mang dấu ấn riêng phục vụ cho các hoạt động học tập[cite: 1].</li>
+                    </ul>
+                </div>
+
+                <!-- Cách sử dụng web -->
+                <div class="bg-[#FFFDF9] p-6 rounded-xl shadow-md border-2 border-[#E5D5C0]">
+                    <h3 class="text-xl font-bold text-[#2A7B72] mb-3">💡 Hướng Dẫn Sử Dụng</h3>
+                    <ul class="space-y-2 text-[#554A3E] text-sm leading-relaxed list-disc list-inside">
+                        <li><strong>Tab Giới Thiệu:</strong> Xem thông tin tổng quan về nhóm 2[cite: 1].</li>
+                        <li><strong>Tab Thành Viên:</strong> Tìm hiểu về các thành viên trong nhóm[cite: 1].</li>
+                        <li><strong>Tab Nộp Bài Tập:</strong> Tải ảnh bài tập lên, ghi chú chi tiết và dễ dàng chỉnh sửa/xóa khi cần[cite: 1].</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+        <!-- TAB 2: GIỚI THIỆU THÀNH VIÊN -->
         <section id="tab-members" class="space-y-8">
             <div class="text-center mb-8">
                 <h2 class="text-3xl font-bold text-[#8C2318] tracking-wider">THÀNH VIÊN NHÓM</h2>
