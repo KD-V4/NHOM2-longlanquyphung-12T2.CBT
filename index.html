@@ -7,11 +7,14 @@
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
+        /* Font chữ Serif mang phong cách hoài cổ, nghệ thuật */
         body {
             font-family: "Times New Roman", Times, Georgia, serif;
             background-color: #FAF6EE; /* Màu nền giấy kem xuyến chỉ */
             color: #1A1A1A;
         }
+
+        /* Lưới 4 thành viên */
         .member-grid {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
@@ -19,6 +22,8 @@
             max-width: 1150px;
             margin: 0 auto;
         }
+
+        /* Thẻ thành viên phong cách Vintage */
         .card {
             background: #FFFDF9;
             border: 2px solid #E5D5C0;
@@ -37,36 +42,48 @@
             box-shadow: 0 8px 18px rgba(42, 123, 114, 0.2);
             border-color: #2A7B72;
         }
+
+        /* Khung ảnh chân dung cổ điển */
         .avatar {
-            width: 140px;            
-            height: 160px;           
-            border-radius: 10px;    
+            width: 140px;
+            height: 160px;
+            border-radius: 10px;
             object-fit: cover;
             background-color: #F3ECE0;
-
             border: 3px solid #C83E2B; 
             outline: 2px solid #D4A237;
-            outline-offset: -5px;   
-            
-            box-shadow: 0 5px 12px rgba(0, 0, 0, 0.15); 
+            outline-offset: -5px;
+            box-shadow: 0 5px 12px rgba(0, 0, 0, 0.15);
             margin-bottom: 20px;
             transition: transform 0.3s;
         }
 
         .card:hover .avatar {
-            transform: scale(1.03);  /* Hiệu ứng phóng nhẹ khi rê chuột vào */
+            transform: scale(1.03);
+        }
+
+        /* Khung ảnh chung của nhóm (Ảnh tập thể to) */
+        .group-photo {
+            width: 100%;
+            max-height: 450px;
+            object-fit: cover;
+            border-radius: 12px;
+            border: 4px solid #C83E2B;
+            outline: 3px solid #D4A237;
+            outline-offset: -8px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
         }
 
         .name {
             font-size: 20px;
             font-weight: 700;
-            color: #8C2318; /* Màu đỏ gạch đậm */
+            color: #8C2318;
             margin-bottom: 4px;
         }
 
         .role {
             font-size: 13px;
-            color: #2A7B72; /* Màu xanh ngọc cổ */
+            color: #2A7B72;
             font-weight: 700;
             margin-bottom: 12px;
             text-transform: uppercase;
@@ -112,28 +129,29 @@
 
     <!-- Header & Navigation -->
     <header class="bg-[#C83E2B] text-[#FFFDF9] shadow-md border-b-4 border-[#D4A237]">
-        <div class="container mx-auto px-4 py-4 flex justify-between items-center">
+        <div class="container mx-auto px-4 py-4 flex flex-wrap justify-between items-center gap-2">
             <h1 class="text-2xl font-bold tracking-wide">PORTAL NHÓM HỌC TẬP</h1>
-            <nav class="space-x-2">
-                <button onclick="switchTab('members')" id="btn-members" class="px-4 py-2 rounded-lg bg-[#8C2318] text-[#E8BA5A] font-bold border border-[#D4A237] transition">Thành Viên</button>
-                <button onclick="switchTab('assignments')" id="btn-assignments" class="px-4 py-2 rounded-lg hover:bg-[#8C2318] hover:text-[#E8BA5A] font-medium transition">Nộp Bài Tập</button>
+            <nav class="space-x-1 sm:space-x-2">
+                <button onclick="switchTab('about')" id="btn-about" class="px-3 py-2 rounded-lg bg-[#8C2318] text-[#E8BA5A] font-bold border border-[#D4A237] transition text-sm sm:text-base">Giới Thiệu</button>
+                <button onclick="switchTab('members')" id="btn-members" class="px-3 py-2 rounded-lg hover:bg-[#8C2318] hover:text-[#E8BA5A] font-medium transition text-sm sm:text-base">Thành Viên</button>
+                <button onclick="switchTab('assignments')" id="btn-assignments" class="px-3 py-2 rounded-lg hover:bg-[#8C2318] hover:text-[#E8BA5A] font-medium transition text-sm sm:text-base">Nộp Bài Tập</button>
             </nav>
         </div>
     </header>
 
     <!-- Main Content -->
     <main class="container mx-auto px-4 py-8 flex-grow">
+
         <!-- TAB 1: GIỚI THIỆU CHUNG -->
         <section id="tab-about" class="space-y-8 max-w-4xl mx-auto">
             <div class="text-center mb-6">
                 <h2 class="text-3xl font-bold text-[#8C2318] tracking-wider">VỀ CHÚNG MÌNH</h2>
                 <div class="w-24 h-1 bg-[#D4A237] mx-auto my-2 rounded"></div>
-                <p class="text-[#554A3E] mt-1 italic">Nơi lưu giữ hành trình học tập và kết nối các thành viên.</p>
+                <p class="text-[#554A3E] mt-1 italic">Nơi lưu giữ hành trình học tập môn Tin học 12 của nhóm 2.</p>
             </div>
 
             <!-- Khung ảnh chung của nhóm -->
             <div class="bg-[#FFFDF9] p-6 rounded-xl shadow-md border-2 border-[#E5D5C0] text-center">
-                <h3 class="text-xl font-bold text-[#2A7B72] mb-4"></h3>
                 <!-- Đổi tên file ảnh thành nhom.jpg khi upload lên GitHub -->
                 <img src="nhom.jpg" alt="Ảnh chung của nhóm" class="group-photo mx-auto" onerror="this.src='https://placehold.co/800x400/F3ECE0/2A7B72?text=Chèn+Ảnh+Chung+Của+Nhóm+Vào+Đây+(nhom.jpg)'">
                 <p class="text-sm text-[#554A3E] mt-3 italic">"HỌC, HỌC NỮA,HỌC MÃI"</p>
@@ -144,7 +162,7 @@
                 <div class="bg-[#FFFDF9] p-6 rounded-xl shadow-md border-2 border-[#E5D5C0]">
                     <h3 class="text-xl font-bold text-[#8C2318] mb-3">🎯 Mục Đích Thành Lập</h3>
                     <ul class="space-y-2 text-[#554A3E] text-sm leading-relaxed list-disc list-inside">
-                        <li>Đây là không gian chung để lưu trữ và quản lý tài liệu học tập môn Tin học của nhóm.</li>
+                        <li>Tạo không gian chung để lưu trữ và quản lý tài liệu học tập của nhóm.</li>
                         <li>Giúp các thành viên dễ dàng nộp bài, xem lại tiến độ và hỗ trợ nhau ôn tập[cite: 1].</li>
                         <li>Xây dựng một không gian sáng tạo mang dấu ấn riêng phục vụ cho các hoạt động học tập[cite: 1].</li>
                     </ul>
@@ -154,15 +172,16 @@
                 <div class="bg-[#FFFDF9] p-6 rounded-xl shadow-md border-2 border-[#E5D5C0]">
                     <h3 class="text-xl font-bold text-[#2A7B72] mb-3">💡 Hướng Dẫn Sử Dụng</h3>
                     <ul class="space-y-2 text-[#554A3E] text-sm leading-relaxed list-disc list-inside">
-                        <li><strong>Tab Giới Thiệu:</strong> Xem thông tin tổng quan về nhóm 2[cite: 1].</li>
+                        <li><strong>Tab Giới Thiệu:</strong> Xem thông tin chung [cite: 1].</li>
                         <li><strong>Tab Thành Viên:</strong> Tìm hiểu về các thành viên trong nhóm[cite: 1].</li>
                         <li><strong>Tab Nộp Bài Tập:</strong> Tải ảnh bài tập lên, ghi chú chi tiết và dễ dàng chỉnh sửa/xóa khi cần[cite: 1].</li>
                     </ul>
                 </div>
             </div>
         </section>
+
         <!-- TAB 2: GIỚI THIỆU THÀNH VIÊN -->
-        <section id="tab-members" class="space-y-8">
+        <section id="tab-members" class="hidden space-y-8">
             <div class="text-center mb-8">
                 <h2 class="text-3xl font-bold text-[#8C2318] tracking-wider">THÀNH VIÊN NHÓM</h2>
                 <div class="w-24 h-1 bg-[#D4A237] mx-auto my-2 rounded"></div>
@@ -172,40 +191,36 @@
             <div class="member-grid">
                 <!-- THÀNH VIÊN 1 -->
                 <div class="card">
-                    <!-- Ảnh thành viên 1: Đổi tên file ảnh thành duyen.jpg trên GitHub -->
                     <img src="duyen.jpg" alt="Võ Thị Kim Duyên" class="avatar" onerror="this.src='https://placehold.co/140x160/F3ECE0/2A7B72?text=Kim+Duyên'">
                     <h3 class="name">Võ Thị Kim Duyên</h3>
-                    <p class="role">Thành viên</p>
+                    <p class="role">Trưởng nhóm</p>
                     <p class="bio">Number 3</p>
                     <a href="mailto:kimduyen090513@gmail.com" class="email-link">kimduyen090513@gmail.com</a>
                 </div>
 
                 <!-- THÀNH VIÊN 2 -->
                 <div class="card">
-                    <!-- Ảnh thành viên 2: Đổi tên file ảnh thành truc.jpg trên GitHub -->
                     <img src="truc.jpg" alt="Lê Thanh Trúc" class="avatar" onerror="this.src='https://placehold.co/140x160/F3ECE0/2A7B72?text=Thanh+Trúc'">
                     <h3 class="name">Lê Thanh Trúc</h3>
-                    <p class="role">Thành viên/UX</p>
+                    <p class="role">Nhóm trưởng/UX</p>
                     <p class="bio">Number 16</p>
                     <a href="mailto:lethanhtrucbt09@gmail.com" class="email-link">lethanhtrucbt09@gmail.com</a>
                 </div>
 
                 <!-- THÀNH VIÊN 3 -->
                 <div class="card">
-                    <!-- Ảnh thành viên 3: Đổi tên file ảnh thành chau.jpg trên GitHub -->
                     <img src="chau.jpg" alt="Phạm Ngọc Châu" class="avatar" onerror="this.src='https://placehold.co/140x160/F3ECE0/2A7B72?text=Ngọc+Châu'">
                     <h3 class="name">Phạm Ngọc Châu</h3>
-                    <p class="role">Thành viên</p>
+                    <p class="role">Nhóm trưởng</p>
                     <p class="bio">Number 2</p>
                     <a href="mailto:phngchau03@gmail.com" class="email-link">phngchau03@gmail.com</a>
                 </div>
 
                 <!-- THÀNH VIÊN 4 -->
                 <div class="card">
-                    <!-- Ảnh thành viên 4: Đổi tên file ảnh thành ty.jpg trên GitHub -->
                     <img src="ty.jpg" alt="Đoàn Xuân Tỷ" class="avatar" onerror="this.src='https://placehold.co/140x160/F3ECE0/2A7B72?text=Xuân+Tỷ'">
                     <h3 class="name">Đoàn Xuân Tỷ</h3>
-                    <p class="role">Thành viên</p>
+                    <p class="role">Nhóm trưởng</p>
                     <p class="bio">Number 18</p>
                     <a href="mailto:doanxty@gmail.com" class="email-link">doanxty@gmail.com</a>
                 </div>
@@ -264,24 +279,41 @@
         <p class="text-sm">&copy; 2026 Quản lý bài tập nhóm. All rights reserved.</p>
     </footer>
 
-    <!-- JavaScript xử lý logic -->
+    <!-- JavaScript xử lý logic chuyển tab -->
     <script>
         function switchTab(tabName) {
+            const aboutSection = document.getElementById('tab-about');
             const membersSection = document.getElementById('tab-members');
             const assignmentsSection = document.getElementById('tab-assignments');
+            
+            const btnAbout = document.getElementById('btn-about');
             const btnMembers = document.getElementById('btn-members');
             const btnAssignments = document.getElementById('btn-assignments');
 
-            if (tabName === 'members') {
+            // Ẩn tất cả các tab
+            aboutSection.classList.add('hidden');
+            membersSection.classList.add('hidden');
+            assignmentsSection.classList.add('hidden');
+
+            // Xóa style active của các nút
+            [btnAbout, btnMembers, btnAssignments].forEach(btn => {
+                btn.classList.remove('bg-[#8C2318]', 'text-[#E8BA5A]', 'border', 'border-[#D4A237]');
+                btn.classList.add('hover:bg-[#8C2318]', 'hover:text-[#E8BA5A]');
+            });
+
+            // Hiển thị tab được chọn
+            if (tabName === 'about') {
+                aboutSection.classList.remove('hidden');
+                btnAbout.classList.add('bg-[#8C2318]', 'text-[#E8BA5A]', 'border', 'border-[#D4A237]');
+                btnAbout.classList.remove('hover:bg-[#8C2318]', 'hover:text-[#E8BA5A]');
+            } else if (tabName === 'members') {
                 membersSection.classList.remove('hidden');
-                assignmentsSection.classList.add('hidden');
                 btnMembers.classList.add('bg-[#8C2318]', 'text-[#E8BA5A]', 'border', 'border-[#D4A237]');
-                btnAssignments.classList.remove('bg-[#8C2318]', 'text-[#E8BA5A]', 'border', 'border-[#D4A237]');
+                btnMembers.classList.remove('hover:bg-[#8C2318]', 'hover:text-[#E8BA5A]');
             } else {
                 assignmentsSection.classList.remove('hidden');
-                membersSection.classList.add('hidden');
                 btnAssignments.classList.add('bg-[#8C2318]', 'text-[#E8BA5A]', 'border', 'border-[#D4A237]');
-                btnMembers.classList.remove('bg-[#8C2318]', 'text-[#E8BA5A]', 'border', 'border-[#D4A237]');
+                btnAssignments.classList.remove('hover:bg-[#8C2318]', 'hover:text-[#E8BA5A]');
             }
         }
 
