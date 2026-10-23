@@ -7,69 +7,100 @@
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
-        /* CSS cho phần danh sách thành viên */
+        /* Font chữ Serif mang phong cách hoài cổ, nghệ thuật */
+        body {
+            font-family: "Times New Roman", Times, Georgia, serif;
+            background-color: #FAF6EE; /* Màu nền giấy kem xuyến chỉ */
+            color: #1A1A1A;
+        }
+
+        /* Lưới 4 thành viên */
         .member-grid {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
-            gap: 20px;
-            max-width: 1100px;
+            gap: 24px;
+            max-width: 1150px;
             margin: 0 auto;
         }
 
+        /* Thẻ thành viên phong cách Vintage */
         .card {
-            background: #ffffff;
-            border: 1px solid #e5e7eb;
-            border-radius: 12px;
-            padding: 24px 20px;
+            background: #FFFDF9;
+            border: 2px solid #E5D5C0;
+            border-radius: 14px;
+            padding: 28px 20px;
             text-align: center;
             display: flex;
             flex-direction: column;
             align-items: center;
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+            box-shadow: 0 4px 12px rgba(200, 62, 43, 0.08);
+            transition: transform 0.2s, box-shadow 0.2s;
         }
 
+        .card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 18px rgba(42, 123, 114, 0.2);
+            border-color: #2A7B72;
+        }
+
+        /* KHUNG ẢNH CỔ ĐIỂN - DÁNG TRANH KHẮC GỖ TO ĐẸP */
         .avatar {
-            width: 88px;
-            height: 88px;
-            border-radius: 50%;
+            width: 140px;            /* Tăng kích thước khung ảnh */
+            height: 160px;           /* Dáng dọc hình tranh chân dung cổ */
+            border-radius: 10px;     /* Bo góc nhẹ cổ kính */
             object-fit: cover;
-            background-color: #f3f4f6;
-            margin-bottom: 16px;
+            background-color: #F3ECE0;
+            
+            /* Viền kép nghệ thuật (Đỏ son lồng Vàng đồng) */
+            border: 3px solid #C83E2B; 
+            outline: 2px solid #D4A237;
+            outline-offset: -5px;    /* Đẩy viền vàng lồng vào trong */
+            
+            box-shadow: 0 5px 12px rgba(0, 0, 0, 0.15); /* Tạo độ nổi như bức tranh */
+            margin-bottom: 20px;
+            transition: transform 0.3s;
+        }
+
+        .card:hover .avatar {
+            transform: scale(1.03);  /* Hiệu ứng phóng nhẹ khi rê chuột vào */
         }
 
         .name {
-            font-size: 18px;
-            font-weight: 600;
-            color: #111827;
+            font-size: 20px;
+            font-weight: 700;
+            color: #8C2318; /* Màu đỏ gạch đậm */
             margin-bottom: 4px;
         }
 
         .role {
             font-size: 13px;
-            color: #2563eb;
-            font-weight: 500;
+            color: #2A7B72; /* Màu xanh ngọc cổ */
+            font-weight: 700;
             margin-bottom: 12px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
         }
 
         .bio {
-            font-size: 13px;
-            color: #6b7280;
+            font-size: 14px;
+            color: #554A3E;
             margin-bottom: 20px;
             flex-grow: 1;
         }
 
         .email-link {
             font-size: 13px;
-            color: #4b5563;
+            color: #2A7B72;
             text-decoration: none;
             word-break: break-all;
             padding-top: 12px;
-            border-top: 1px solid #f3f4f6;
+            border-top: 1px dashed #E5D5C0;
             width: 100%;
+            font-family: sans-serif;
         }
 
         .email-link:hover {
-            color: #2563eb;
+            color: #C83E2B;
         }
 
         @media (max-width: 960px) {
@@ -85,15 +116,15 @@
         }
     </style>
 </head>
-<body class="bg-gray-50 text-gray-800 min-h-screen flex flex-col">
+<body class="min-h-screen flex flex-col">
 
     <!-- Header & Navigation -->
-    <header class="bg-indigo-600 text-white shadow-md">
+    <header class="bg-[#C83E2B] text-[#FFFDF9] shadow-md border-b-4 border-[#D4A237]">
         <div class="container mx-auto px-4 py-4 flex justify-between items-center">
-            <h1 class="text-2xl font-bold">Portal Nhóm Học Tập</h1>
+            <h1 class="text-2xl font-bold tracking-wide">PORTAL NHÓM HỌC TẬP</h1>
             <nav class="space-x-2">
-                <button onclick="switchTab('members')" id="btn-members" class="px-4 py-2 rounded-lg bg-indigo-700 font-medium transition">Thành Viên</button>
-                <button onclick="switchTab('assignments')" id="btn-assignments" class="px-4 py-2 rounded-lg hover:bg-indigo-700 font-medium transition">Nộp Bài Tập</button>
+                <button onclick="switchTab('members')" id="btn-members" class="px-4 py-2 rounded-lg bg-[#8C2318] text-[#E8BA5A] font-bold border border-[#D4A237] transition">Thành Viên</button>
+                <button onclick="switchTab('assignments')" id="btn-assignments" class="px-4 py-2 rounded-lg hover:bg-[#8C2318] hover:text-[#E8BA5A] font-medium transition">Nộp Bài Tập</button>
             </nav>
         </div>
     </header>
@@ -104,43 +135,48 @@
         <!-- TAB 1: GIỚI THIỆU THÀNH VIÊN -->
         <section id="tab-members" class="space-y-8">
             <div class="text-center mb-8">
-                <h2 class="text-3xl font-bold text-gray-800">Thành Viên Nhóm</h2>
-                <p class="text-gray-600 mt-2">Danh sách thành viên tham gia thực hiện dự án.</p>
+                <h2 class="text-3xl font-bold text-[#8C2318] tracking-wider">THÀNH VIÊN NHÓM</h2>
+                <div class="w-24 h-1 bg-[#D4A237] mx-auto my-2 rounded"></div>
+                <p class="text-[#554A3E] mt-1 italic">Danh sách các thành viên thực hiện dự án.</p>
             </div>
 
             <div class="member-grid">
                 <!-- THÀNH VIÊN 1 -->
                 <div class="card">
-                    <img src="https://placehold.co/100x100/e5e7eb/6b7280?text=TV+1" alt="Ảnh đại diện" class="avatar">
+                    <!-- Ảnh thành viên 1: Đổi tên file ảnh thành duyen.jpg trên GitHub -->
+                    <img src="duyen.jpg" alt="Võ Thị Kim Duyên" class="avatar" onerror="this.src='https://placehold.co/140x160/F3ECE0/2A7B72?text=Kim+Duyên'">
                     <h3 class="name">Võ Thị Kim Duyên</h3>
-                    <p class="role">Trưởng nhóm</p>
+                    <p class="role">Thành viên</p>
                     <p class="bio">Number 3</p>
                     <a href="mailto:kimduyen090513@gmail.com" class="email-link">kimduyen090513@gmail.com</a>
                 </div>
 
                 <!-- THÀNH VIÊN 2 -->
                 <div class="card">
-                    <img src="https://placehold.co/100x100/e5e7eb/6b7280?text=TV+2" alt="Ảnh đại diện" class="avatar">
+                    <!-- Ảnh thành viên 2: Đổi tên file ảnh thành truc.jpg trên GitHub -->
+                    <img src="truc.jpg" alt="Lê Thanh Trúc" class="avatar" onerror="this.src='https://placehold.co/140x160/F3ECE0/2A7B72?text=Thanh+Trúc'">
                     <h3 class="name">Lê Thanh Trúc</h3>
-                    <p class="role">Nhóm trưởng/UX</p>
+                    <p class="role">Thành viên/UX</p>
                     <p class="bio">Number 16</p>
                     <a href="mailto:lethanhtrucbt09@gmail.com" class="email-link">lethanhtrucbt09@gmail.com</a>
                 </div>
 
                 <!-- THÀNH VIÊN 3 -->
                 <div class="card">
-                    <img src="https://placehold.co/100x100/e5e7eb/6b7280?text=TV+3" alt="Ảnh đại diện" class="avatar">
+                    <!-- Ảnh thành viên 3: Đổi tên file ảnh thành chau.jpg trên GitHub -->
+                    <img src="chau.jpg" alt="Phạm Ngọc Châu" class="avatar" onerror="this.src='https://placehold.co/140x160/F3ECE0/2A7B72?text=Ngọc+Châu'">
                     <h3 class="name">Phạm Ngọc Châu</h3>
-                    <p class="role">Nhóm trưởng</p>
+                    <p class="role">Thành viên</p>
                     <p class="bio">Number 2</p>
                     <a href="mailto:phngchau03@gmail.com" class="email-link">phngchau03@gmail.com</a>
                 </div>
 
                 <!-- THÀNH VIÊN 4 -->
                 <div class="card">
-                    <img src="https://placehold.co/100x100/e5e7eb/6b7280?text=TV+4" alt="Ảnh đại diện" class="avatar">
+                    <!-- Ảnh thành viên 4: Đổi tên file ảnh thành ty.jpg trên GitHub -->
+                    <img src="ty.jpg" alt="Đoàn Xuân Tỷ" class="avatar" onerror="this.src='https://placehold.co/140x160/F3ECE0/2A7B72?text=Xuân+Tỷ'">
                     <h3 class="name">Đoàn Xuân Tỷ</h3>
-                    <p class="role">Nhóm trưởng</p>
+                    <p class="role">Thành viên</p>
                     <p class="bio">Number 18</p>
                     <a href="mailto:doanxty@gmail.com" class="email-link">doanxty@gmail.com</a>
                 </div>
@@ -150,43 +186,44 @@
         <!-- TAB 2: UPLOAD & QUẢN LÝ BÀI TẬP -->
         <section id="tab-assignments" class="hidden space-y-8">
             <div class="text-center">
-                <h2 class="text-3xl font-bold text-gray-800">Kho Bài Tập Nhóm</h2>
-                <p class="text-gray-600 mt-2">Đăng tải, chỉnh sửa và xem lại các bài tập đã nộp.</p>
+                <h2 class="text-3xl font-bold text-[#8C2318] tracking-wider">KHO BÀI TẬP NHÓM</h2>
+                <div class="w-24 h-1 bg-[#D4A237] mx-auto my-2 rounded"></div>
+                <p class="text-[#554A3E] mt-1 italic">Đăng tải, chỉnh sửa và xem lại các bài tập đã nộp.</p>
             </div>
 
             <!-- Form Thêm / Chỉnh sửa Bài Tập -->
-            <div class="bg-white p-6 rounded-xl shadow-md max-w-2xl mx-auto border border-gray-100">
-                <h3 id="form-title" class="text-xl font-semibold mb-4 text-indigo-600">Thêm Bài Tập Mới</h3>
+            <div class="bg-[#FFFDF9] p-6 rounded-xl shadow-md max-w-2xl mx-auto border-2 border-[#E5D5C0]">
+                <h3 id="form-title" class="text-xl font-bold mb-4 text-[#2A7B72]">Thêm Bài Tập Mới</h3>
                 <form id="assignment-form" onsubmit="handleFormSubmit(event)" class="space-y-4">
                     <input type="hidden" id="edit-index" value="">
                     <div>
-                        <label class="block text-sm font-medium text-gray-700">Tên bài tập / Tiêu đề</label>
-                        <input type="text" id="title" required class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500">
+                        <label class="block text-sm font-semibold text-[#554A3E]">Tên bài tập / Tiêu đề</label>
+                        <input type="text" id="title" required class="mt-1 block w-full px-3 py-2 bg-[#FAF6EE] border border-[#E5D5C0] rounded-md shadow-sm focus:outline-none focus:border-[#2A7B72]">
                     </div>
                     <div>
-                        <label class="block text-sm font-medium text-gray-700">Tên thành viên nộp</label>
-                        <input type="text" id="author" required class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500">
+                        <label class="block text-sm font-semibold text-[#554A3E]">Tên thành viên nộp</label>
+                        <input type="text" id="author" required class="mt-1 block w-full px-3 py-2 bg-[#FAF6EE] border border-[#E5D5C0] rounded-md shadow-sm focus:outline-none focus:border-[#2A7B72]">
                     </div>
                     <div>
-                        <label class="block text-sm font-medium text-gray-700">Mô tả chi tiết</label>
-                        <textarea id="description" rows="3" required class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"></textarea>
+                        <label class="block text-sm font-semibold text-[#554A3E]">Mô tả chi tiết</label>
+                        <textarea id="description" rows="3" required class="mt-1 block w-full px-3 py-2 bg-[#FAF6EE] border border-[#E5D5C0] rounded-md shadow-sm focus:outline-none focus:border-[#2A7B72]"></textarea>
                     </div>
                     <div>
-                        <label class="block text-sm font-medium text-gray-700">Tải ảnh lên (Screenshot / Hình ảnh bài tập)</label>
-                        <input type="file" id="image-input" accept="image/*" class="mt-1 block w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-md file:border-0 file:text-sm file:font-semibold file:bg-indigo-50 file:text-indigo-700 hover:file:bg-indigo-100">
+                        <label class="block text-sm font-semibold text-[#554A3E]">Tải ảnh lên (Screenshot / Bài tập)</label>
+                        <input type="file" id="image-input" accept="image/*" class="mt-1 block w-full text-sm text-[#554A3E] file:mr-4 file:py-2 file:px-4 file:rounded-md file:border-0 file:text-sm file:font-semibold file:bg-[#F3ECE0] file:text-[#2A7B72] hover:file:bg-[#E5D5C0]">
                     </div>
                     <div class="flex space-x-3">
-                        <button type="submit" id="submit-btn" class="w-full bg-indigo-600 text-white py-2 px-4 rounded-md hover:bg-indigo-700 transition font-medium">Đăng Bài Tập</button>
-                        <button type="button" id="cancel-edit-btn" onclick="resetForm()" class="hidden w-1/3 bg-gray-300 text-gray-700 py-2 px-4 rounded-md hover:bg-gray-400 transition font-medium">Hủy</button>
+                        <button type="submit" id="submit-btn" class="w-full bg-[#C83E2B] text-white py-2 px-4 rounded-md hover:bg-[#8C2318] transition font-bold border border-[#D4A237]">Đăng Bài Tập</button>
+                        <button type="button" id="cancel-edit-btn" onclick="resetForm()" class="hidden w-1/3 bg-[#E5D5C0] text-[#554A3E] py-2 px-4 rounded-md hover:bg-[#d5c3aa] transition font-medium">Hủy</button>
                     </div>
                 </form>
             </div>
 
-            <!-- Danh sách bài tập đã đăng -->
+            <!-- Danh sách bài tập -->
             <div class="mt-8 max-w-4xl mx-auto">
-                <h3 class="text-2xl font-semibold mb-4 text-gray-800">Danh Sách Bài Tập Đã Nộp</h3>
+                <h3 class="text-2xl font-bold mb-4 text-[#8C2318]">Danh Sách Bài Tập Đã Nộp</h3>
                 <div id="assignments-list" class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <!-- Dữ liệu được render tự động bằng JavaScript -->
+                    <!-- Dữ liệu render bằng JS -->
                 </div>
             </div>
         </section>
@@ -194,13 +231,12 @@
     </main>
 
     <!-- Footer -->
-    <footer class="bg-gray-800 text-white text-center py-4 mt-auto">
-        <p>&copy; 2026 Quản lý bài tập nhóm. All rights reserved.</p>
+    <footer class="bg-[#1A1A1A] text-[#E8BA5A] text-center py-4 mt-auto border-t-2 border-[#D4A237]">
+        <p class="text-sm">&copy; 2026 Quản lý bài tập nhóm. All rights reserved.</p>
     </footer>
 
     <!-- JavaScript xử lý logic -->
     <script>
-        // Chuyển đổi giữa các tab
         function switchTab(tabName) {
             const membersSection = document.getElementById('tab-members');
             const assignmentsSection = document.getElementById('tab-assignments');
@@ -210,56 +246,53 @@
             if (tabName === 'members') {
                 membersSection.classList.remove('hidden');
                 assignmentsSection.classList.add('hidden');
-                btnMembers.classList.add('bg-indigo-700');
-                btnAssignments.classList.remove('bg-indigo-700');
+                btnMembers.classList.add('bg-[#8C2318]', 'text-[#E8BA5A]', 'border', 'border-[#D4A237]');
+                btnAssignments.classList.remove('bg-[#8C2318]', 'text-[#E8BA5A]', 'border', 'border-[#D4A237]');
             } else {
                 assignmentsSection.classList.remove('hidden');
                 membersSection.classList.add('hidden');
-                btnAssignments.classList.add('bg-indigo-700');
-                btnMembers.classList.remove('bg-indigo-700');
+                btnAssignments.classList.add('bg-[#8C2318]', 'text-[#E8BA5A]', 'border', 'border-[#D4A237]');
+                btnMembers.classList.remove('bg-[#8C2318]', 'text-[#E8BA5A]', 'border', 'border-[#D4A237]');
             }
         }
 
-        // Quản lý dữ liệu bài tập trong LocalStorage
         let assignments = JSON.parse(localStorage.getItem('assignments')) || [];
 
         function saveToLocalStorage() {
             localStorage.setItem('assignments', JSON.stringify(assignments));
         }
 
-        // Render danh sách bài tập ra giao diện
         function renderAssignments() {
             const listContainer = document.getElementById('assignments-list');
             listContainer.innerHTML = '';
 
             if (assignments.length === 0) {
-                listContainer.innerHTML = '<p class="text-gray-500 col-span-2 text-center py-6 bg-white rounded-xl shadow-sm border">Chưa có bài tập nào được đăng tải.</p>';
+                listContainer.innerHTML = '<p class="text-[#554A3E] col-span-2 text-center py-6 bg-[#FFFDF9] rounded-xl border border-[#E5D5C0] italic">Chưa có bài tập nào được đăng tải.</p>';
                 return;
             }
 
             assignments.forEach((item, index) => {
                 const card = document.createElement('div');
-                card.className = 'bg-white p-6 rounded-xl shadow-md flex flex-col justify-between space-y-4 border border-gray-100';
+                card.className = 'bg-[#FFFDF9] p-6 rounded-xl shadow-md flex flex-col justify-between space-y-4 border-2 border-[#E5D5C0]';
 
                 card.innerHTML = `
                     <div>
                         <div class="flex justify-between items-start">
-                            <h4 class="text-xl font-bold text-gray-800">${item.title}</h4>
-                            <span class="text-xs bg-indigo-100 text-indigo-800 px-2.5 py-1 rounded-full font-medium">Bởi: ${item.author}</span>
+                            <h4 class="text-xl font-bold text-[#8C2318]">${item.title}</h4>
+                            <span class="text-xs bg-[#F3ECE0] text-[#2A7B72] px-2.5 py-1 rounded-full font-bold border border-[#D4A237]">Bởi: ${item.author}</span>
                         </div>
-                        <p class="text-gray-600 mt-2 text-sm">${item.description}</p>
+                        <p class="text-[#554A3E] mt-2 text-sm">${item.description}</p>
                     </div>
-                    ${item.image ? `<div class="mt-2"><img src="${item.image}" alt="Bài tập" class="w-full h-48 object-cover rounded-md border"></div>` : ''}
-                    <div class="flex justify-end space-x-2 pt-2 border-t">
-                        <button onclick="editAssignment(${index})" class="px-3 py-1 bg-amber-500 text-white text-sm rounded hover:bg-amber-600 transition">Chỉnh sửa</button>
-                        <button onclick="deleteAssignment(${index})" class="px-3 py-1 bg-red-500 text-white text-sm rounded hover:bg-red-600 transition">Xóa</button>
+                    ${item.image ? `<div class="mt-2"><img src="${item.image}" alt="Bài tập" class="w-full h-48 object-cover rounded-md border border-[#E5D5C0]"></div>` : ''}
+                    <div class="flex justify-end space-x-2 pt-2 border-t border-[#E5D5C0]">
+                        <button onclick="editAssignment(${index})" class="px-3 py-1 bg-[#2A7B72] text-white text-sm rounded hover:bg-[#1F5E56] transition font-semibold">Chỉnh sửa</button>
+                        <button onclick="deleteAssignment(${index})" class="px-3 py-1 bg-[#C83E2B] text-white text-sm rounded hover:bg-[#8C2318] transition font-semibold">Xóa</button>
                     </div>
                 `;
                 listContainer.appendChild(card);
             });
         }
 
-        // Xử lý Thêm / Cập nhật bài tập
         function handleFormSubmit(event) {
             event.preventDefault();
 
@@ -299,7 +332,6 @@
             }
         }
 
-        // Đưa dữ liệu vào form để chỉnh sửa
         function editAssignment(index) {
             const item = assignments[index];
             document.getElementById('title').value = item.title;
@@ -314,7 +346,6 @@
             window.scrollTo({ top: 200, behavior: 'smooth' });
         }
 
-        // Xóa bài tập
         function deleteAssignment(index) {
             if (confirm('Bạn có chắc chắn muốn xóa bài tập này không?')) {
                 assignments.splice(index, 1);
@@ -323,7 +354,6 @@
             }
         }
 
-        // Reset form về trạng thái thêm mới
         function resetForm() {
             document.getElementById('assignment-form').reset();
             document.getElementById('edit-index').value = '';
@@ -332,7 +362,6 @@
             document.getElementById('cancel-edit-btn').classList.add('hidden');
         }
 
-        // Khởi chạy khi tải trang
         renderAssignments();
     </script>
 </body>
