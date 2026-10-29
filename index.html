@@ -35,18 +35,13 @@
             align-items: center;
             box-shadow: 0 4px 12px rgba(200, 62, 43, 0.08);
             transition: transform 0.2s, box-shadow 0.2s;
-            cursor: pointer; /* Hiện bàn tay khi rê chuột vào bất kỳ đâu trên thẻ */
+            cursor: pointer;
         }
 
         .card:hover {
             transform: translateY(-4px);
             box-shadow: 0 8px 18px rgba(42, 123, 114, 0.2);
             border-color: #2A7B72;
-        }
-
-        /* Hiệu ứng nhún nhẹ xuống khi chạm/bấm vào thẻ */
-        .card:active {
-            transform: translateY(0px) scale(0.98);
         }
 
         /* Khung ảnh chân dung cổ điển */
@@ -118,7 +113,6 @@
             color: #C83E2B;
         }
 
-        /* Hiệu ứng mờ nền cho Popup Profile */
         .modal-backdrop {
             background-color: rgba(26, 26, 26, 0.65);
             backdrop-filter: blur(4px);
@@ -145,12 +139,10 @@
             
             <!-- Cụm Logo + Tên Portal -->
             <div class="flex items-center space-x-3 cursor-pointer" onclick="switchTab('about')">
-                <!-- Khung Logo viền vàng cổ điển -->
                 <img src="logo.png" 
                      alt="Logo Nhóm" 
                      class="w-11 h-11 rounded-full object-cover border-2 border-[#D4A237] bg-[#FFFDF9] shadow-md"
                      onerror="this.src='https://placehold.co/100x100/F3ECE0/2A7B72?text=LOGO'">
-                
                 <div>
                     <h1 class="text-xl sm:text-2xl font-bold tracking-wide">PORTAL NHÓM HỌC TẬP</h1>
                 </div>
@@ -177,31 +169,27 @@
                 <p class="text-[#554A3E] mt-1 italic">Nơi lưu giữ hành trình học tập môn Tin học 12 của nhóm 2.</p>
             </div>
 
-            <!-- Khung ảnh chung của nhóm -->
             <div class="bg-[#FFFDF9] p-6 rounded-xl shadow-md border-2 border-[#E5D5C0] text-center">
-                <!-- Đổi tên file ảnh thành nhom.jpg khi upload lên GitHub -->
                 <img src="nhom.jpg" alt="Ảnh chung của nhóm" class="group-photo mx-auto" onerror="this.src='https://placehold.co/800x400/F3ECE0/2A7B72?text=Chèn+Ảnh+Chung+Của+Nhóm+Vào+Đây+(nhom.jpg)'">
                 <p class="text-sm text-[#554A3E] mt-3 italic">"HỌC, HỌC NỮA, HỌC MÃI"</p>
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <!-- Mục đích lập web -->
                 <div class="bg-[#FFFDF9] p-6 rounded-xl shadow-md border-2 border-[#E5D5C0]">
                     <h3 class="text-xl font-bold text-[#8C2318] mb-3">🎯 Mục Đích Thành Lập</h3>
                     <ul class="space-y-2 text-[#554A3E] text-sm leading-relaxed list-disc list-inside">
-                        <li>Tạo không gian chung để lưu trữ và quản lý tài liệu học tập của nhóm.</li>
-                        <li>Giúp các thành viên dễ dàng nộp bài, xem lại tiến độ và hỗ trợ nhau ôn tập</li>
-                        <li>Xây dựng một không gian sáng tạo mang dấu ấn riêng phục vụ cho các hoạt động học tập</li>
+                        <li>Tạo không gian chung để lưu trữ và quản lý tài liệu học tập của nhóm[cite: 1].</li>
+                        <li>Giúp các thành viên dễ dàng nộp bài, xem lại tiến độ và hỗ trợ nhau ôn tập[cite: 1]</li>
+                        <li>Xây dựng một không gian sáng tạo mang dấu ấn riêng phục vụ cho các hoạt động học tập[cite: 1]</li>
                     </ul>
                 </div>
 
-                <!-- Cách sử dụng web -->
                 <div class="bg-[#FFFDF9] p-6 rounded-xl shadow-md border-2 border-[#E5D5C0]">
                     <h3 class="text-xl font-bold text-[#2A7B72] mb-3">💡 Hướng Dẫn Sử Dụng</h3>
                     <ul class="space-y-2 text-[#554A3E] text-sm leading-relaxed list-disc list-inside">
-                        <li><strong>Tab Giới Thiệu:</strong> Xem thông tin chung</li>
-                        <li><strong>Tab Thành Viên:</strong> Tìm hiểu về các thành viên trong nhóm</li>
-                        <li><strong>Tab Nộp Bài Tập:</strong> Tải ảnh bài tập lên, ghi chú chi tiết và dễ dàng chỉnh sửa/xóa khi cần</li>
+                        <li><strong>Tab Giới Thiệu:</strong> Xem thông tin chung[cite: 1]</li>
+                        <li><strong>Tab Thành Viên:</strong> Tìm hiểu về các thành viên trong nhóm[cite: 1]</li>
+                        <li><strong>Tab Nộp Bài Tập:</strong> Tải ảnh bài tập lên, ghi chú chi tiết và dễ dàng chỉnh sửa/xóa khi cần[cite: 1]</li>
                     </ul>
                 </div>
             </div>
@@ -209,18 +197,17 @@
 
         <!-- TAB 2: GIỚI THIỆU THÀNH VIÊN -->
         <section id="tab-members" class="hidden space-y-8">
-            <!-- [BỔ SUNG] Nút quay về Trang Chủ -->
             <div class="flex justify-between items-center max-w-[1150px] mx-auto border-b border-[#E5D5C0] pb-4">
                 <button onclick="switchTab('about')" class="flex items-center space-x-2 px-3 py-1.5 bg-[#F3ECE0] text-[#8C2318] rounded-lg hover:bg-[#E5D5C0] transition text-sm font-semibold border border-[#D4A237]">
                     <span>⬅ Quay về Trang Chủ</span>
                 </button>
-                <span class="text-xs text-[#554A3E] italic">Nhấp vào thẻ hoặc nút "Xem Hồ Sơ" để xem thông tin chi tiết</span>
+                <span class="text-xs text-[#554A3E] italic">Nhấp vào thẻ để xem thông tin chi tiết</span>
             </div>
 
             <div class="text-center mb-8">
                 <h2 class="text-3xl font-bold text-[#8C2318] tracking-wider">THÀNH VIÊN NHÓM</h2>
                 <div class="w-24 h-1 bg-[#D4A237] mx-auto my-2 rounded"></div>
-                <p class="text-[#554A3E] mt-1 italic">Danh sách các thành viên thực hiện dự án.</p>
+                <p class="text-[#554A3E] mt-1 italic">Danh sách các thành viên thực hiện dự án[cite: 1].</p>
             </div>
 
             <div class="member-grid">
@@ -230,7 +217,6 @@
                     <h3 class="name">Võ Thị Kim Duyên</h3>
                     <p class="role">Thành viên</p>
                     <p class="bio">Number 03</p>
-                    <button class="w-full py-2 px-3 bg-[#C83E2B] text-white text-xs font-bold rounded-md hover:bg-[#8C2318] transition border border-[#D4A237] shadow-sm mt-auto">🔍 Xem Hồ Sơ Chi Tiết</button>
                 </div>
 
                 <!-- THÀNH VIÊN 2: THANH TRÚC -->
@@ -239,7 +225,6 @@
                     <h3 class="name">Lê Thanh Trúc</h3>
                     <p class="role">Nhóm trưởng</p>
                     <p class="bio">Number 16</p>
-                    <button class="w-full py-2 px-3 bg-[#C83E2B] text-white text-xs font-bold rounded-md hover:bg-[#8C2318] transition border border-[#D4A237] shadow-sm mt-auto">🔍 Xem Hồ Sơ Chi Tiết</button>
                 </div>
 
                 <!-- THÀNH VIÊN 3: NGỌC CHÂU -->
@@ -248,7 +233,6 @@
                     <h3 class="name">Phạm Ngọc Châu</h3>
                     <p class="role">Nhóm trưởng</p>
                     <p class="bio">Number 02</p>
-                    <button class="w-full py-2 px-3 bg-[#C83E2B] text-white text-xs font-bold rounded-md hover:bg-[#8C2318] transition border border-[#D4A237] shadow-sm mt-auto">🔍 Xem Hồ Sơ Chi Tiết</button>
                 </div>
 
                 <!-- THÀNH VIÊN 4: XUÂN TỶ -->
@@ -257,14 +241,12 @@
                     <h3 class="name">Đoàn Xuân Tỷ</h3>
                     <p class="role">Nhóm trưởng</p>
                     <p class="bio">Number 18</p>
-                    <button class="w-full py-2 px-3 bg-[#C83E2B] text-white text-xs font-bold rounded-md hover:bg-[#8C2318] transition border border-[#D4A237] shadow-sm mt-auto">🔍 Xem Hồ Sơ Chi Tiết</button>
                 </div>
             </div>
         </section>
 
         <!-- TAB 3: UPLOAD & QUẢN LÝ BÀI TẬP -->
         <section id="tab-assignments" class="hidden space-y-8">
-            <!--Nút quay về Trang Chủ -->
             <div class="flex justify-between items-center max-w-2xl mx-auto border-b border-[#E5D5C0] pb-4">
                 <button onclick="switchTab('about')" class="flex items-center space-x-2 px-3 py-1.5 bg-[#F3ECE0] text-[#8C2318] rounded-lg hover:bg-[#E5D5C0] transition text-sm font-semibold border border-[#D4A237]">
                     <span>⬅ Quay về Trang Chủ</span>
@@ -275,10 +257,9 @@
             <div class="text-center">
                 <h2 class="text-3xl font-bold text-[#8C2318] tracking-wider">KHO BÀI TẬP NHÓM</h2>
                 <div class="w-24 h-1 bg-[#D4A237] mx-auto my-2 rounded"></div>
-                <p class="text-[#554A3E] mt-1 italic">Đăng tải, chỉnh sửa và xem lại các bài tập đã nộp.</p>
+                <p class="text-[#554A3E] mt-1 italic">Đăng tải, chỉnh sửa và xem lại các bài tập đã nộp[cite: 1].</p>
             </div>
 
-            <!-- Form Thêm / Chỉnh sửa Bài Tập -->
             <div class="bg-[#FFFDF9] p-6 rounded-xl shadow-md max-w-2xl mx-auto border-2 border-[#E5D5C0]">
                 <h3 id="form-title" class="text-xl font-bold mb-4 text-[#2A7B72]">Thêm Bài Tập Mới</h3>
                 <form id="assignment-form" onsubmit="handleFormSubmit(event)" class="space-y-4">
@@ -306,26 +287,19 @@
                 </form>
             </div>
 
-            <!-- Danh sách bài tập -->
             <div class="mt-8 max-w-4xl mx-auto">
                 <h3 class="text-2xl font-bold mb-4 text-[#8C2318]">Danh Sách Bài Tập Đã Nộp</h3>
-                <div id="assignments-list" class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <!-- Dữ liệu render bằng JS -->
-                </div>
+                <div id="assignments-list" class="grid grid-cols-1 md:grid-cols-2 gap-6"></div>
             </div>
         </section>
 
     </main>
 
-    <!-- [BỔ SUNG] MODAL POPUP XEM PROFILE CHI TIẾT TỪNG THÀNH VIÊN -->
+    <!-- MODAL POPUP XEM PROFILE CHI TIẾT TỪNG THÀNH VIÊN -->
     <div id="profile-modal" class="fixed inset-0 z-50 hidden flex items-center justify-center p-4 modal-backdrop" onclick="closeProfileOnBackdrop(event)">
         <div class="bg-[#FFFDF9] border-4 border-[#C83E2B] outline outline-2 outline-[#D4A237] rounded-2xl max-w-lg w-full p-6 shadow-2xl relative transform transition-all" onclick="event.stopPropagation()">
-            <!-- Nút đóng Modal -->
             <button onclick="closeProfile()" class="absolute top-3 right-3 text-[#8C2318] hover:text-[#C83E2B] text-2xl font-bold w-8 h-8 flex items-center justify-center rounded-full bg-[#F3ECE0] border border-[#D4A237]">&times;</button>
-            
-            <div id="modal-content">
-                <!-- Nội dung Profile được điền qua JavaScript -->
-            </div>
+            <div id="modal-content"></div>
         </div>
     </div>
 
@@ -336,7 +310,6 @@
 
     <!-- JavaScript xử lý logic -->
     <script>
-        // [BỔ SUNG] Dữ liệu Profile cá nhân của 4 thành viên
         const memberProfiles = {
             duyen: {
                 name: "Võ Thị Kim Duyên",
@@ -376,7 +349,6 @@
             }
         };
 
-        // [BỔ SUNG] Hàm bật Modal Profile
         function openProfile(key) {
             const data = memberProfiles[key];
             if (!data) return;
@@ -405,7 +377,6 @@
             document.getElementById('profile-modal').classList.remove('hidden');
         }
 
-        // [BỔ SUNG] Hàm đóng Modal Profile
         function closeProfile() {
             document.getElementById('profile-modal').classList.add('hidden');
         }
@@ -425,18 +396,15 @@
             const btnMembers = document.getElementById('btn-members');
             const btnAssignments = document.getElementById('btn-assignments');
 
-            // Ẩn tất cả các tab
             aboutSection.classList.add('hidden');
             membersSection.classList.add('hidden');
             assignmentsSection.classList.add('hidden');
 
-            // Xóa style active của các nút
             [btnAbout, btnMembers, btnAssignments].forEach(btn => {
                 btn.classList.remove('bg-[#8C2318]', 'text-[#E8BA5A]', 'border', 'border-[#D4A237]');
                 btn.classList.add('hover:bg-[#8C2318]', 'hover:text-[#E8BA5A]');
             });
 
-            // Hiển thị tab được chọn
             if (tabName === 'about') {
                 aboutSection.classList.remove('hidden');
                 btnAbout.classList.add('bg-[#8C2318]', 'text-[#E8BA5A]', 'border', 'border-[#D4A237]');
