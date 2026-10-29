@@ -471,7 +471,464 @@
                             <span> Mở / Tải Tài Liệu Đính Kèm</span>
                         </a>
                     </div>
+                </div><!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portal Nhóm Học Tập</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            font-family: "Times New Roman", Times, Georgia, serif;
+            background-color: #FAF6EE;
+            color: #1A1A1A;
+        }
+
+        .member-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 24px;
+            max-width: 1150px;
+            margin: 0 auto;
+        }
+
+        .card {
+            background: #FFFDF9;
+            border: 2px solid #E5D5C0;
+            border-radius: 14px;
+            padding: 28px 20px;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            box-shadow: 0 4px 12px rgba(200, 62, 43, 0.08);
+            transition: transform 0.2s, box-shadow 0.2s;
+            cursor: pointer;
+        }
+
+        .card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 18px rgba(42, 123, 114, 0.2);
+            border-color: #2A7B72;
+        }
+
+        .avatar {
+            width: 140px;
+            height: 160px;
+            border-radius: 10px;
+            object-fit: cover;
+            background-color: #F3ECE0;
+            border: 3px solid #C83E2B; 
+            outline: 2px solid #D4A237;
+            outline-offset: -5px;
+            box-shadow: 0 5px 12px rgba(0, 0, 0, 0.15);
+            margin-bottom: 20px;
+            transition: transform 0.3s;
+        }
+
+        .card:hover .avatar {
+            transform: scale(1.03);
+        }
+
+        .group-photo {
+            width: 100%;
+            max-height: 450px;
+            object-fit: cover;
+            border-radius: 12px;
+            border: 4px solid #C83E2B;
+            outline: 3px solid #D4A237;
+            outline-offset: -8px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .name {
+            font-size: 20px;
+            font-weight: 700;
+            color: #8C2318;
+            margin-bottom: 4px;
+        }
+
+        .role {
+            font-size: 13px;
+            color: #2A7B72;
+            font-weight: 700;
+            margin-bottom: 12px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .modal-backdrop {
+            background-color: rgba(26, 26, 26, 0.65);
+            backdrop-filter: blur(4px);
+        }
+
+        @media (max-width: 960px) {
+            .member-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 560px) {
+            .member-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col">
+
+    <!-- Header & Navigation -->
+    <header class="bg-[#C83E2B] text-[#FFFDF9] shadow-md border-b-4 border-[#D4A237]">
+        <div class="container mx-auto px-4 py-3 flex flex-wrap justify-between items-center gap-2">
+            
+            <div class="flex items-center space-x-3 cursor-pointer" onclick="switchTab('about')">
+                <img src="logo.png" 
+                     alt="Logo Nhóm" 
+                     class="w-11 h-11 rounded-full object-cover border-2 border-[#D4A237] bg-[#FFFDF9] shadow-md"
+                     onerror="this.src='https://placehold.co/100x100/F3ECE0/2A7B72?text=LOGO'">
+                <div>
+                    <h1 class="text-xl sm:text-2xl font-bold tracking-wide">PORTAL NHÓM HỌC TẬP</h1>
                 </div>
+            </div>
+
+            <nav class="space-x-1 sm:space-x-2">
+                <button onclick="switchTab('about')" id="btn-about" class="px-3 py-2 rounded-lg bg-[#8C2318] text-[#E8BA5A] font-bold border border-[#D4A237] transition text-sm sm:text-base">Trang Chủ</button>
+                <button onclick="switchTab('members')" id="btn-members" class="px-3 py-2 rounded-lg hover:bg-[#8C2318] hover:text-[#E8BA5A] font-medium transition text-sm sm:text-base">Thành Viên</button>
+                <button onclick="switchTab('assignments')" id="btn-assignments" class="px-3 py-2 rounded-lg hover:bg-[#8C2318] hover:text-[#E8BA5A] font-medium transition text-sm sm:text-base">Kho Bài Tập</button>
+            </nav>
+
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container mx-auto px-4 py-8 flex-grow">
+
+        <!-- TAB 1: GIỚI THIỆU CHUNG -->
+        <section id="tab-about" class="space-y-8 max-w-4xl mx-auto">
+            <div class="text-center mb-6">
+                <h2 class="text-3xl font-bold text-[#8C2318] tracking-wider">VỀ CHÚNG MÌNH</h2>
+                <div class="w-24 h-1 bg-[#D4A237] mx-auto my-2 rounded"></div>
+                <p class="text-[#554A3E] mt-1 italic">Nơi lưu giữ hành trình học tập môn Tin học 12 của nhóm 2.</p>
+            </div>
+
+            <div class="bg-[#FFFDF9] p-6 rounded-xl shadow-md border-2 border-[#E5D5C0] text-center">
+                <img src="nhom.jpg" alt="Ảnh chung của nhóm" class="group-photo mx-auto" onerror="this.src='https://placehold.co/800x400/F3ECE0/2A7B72?text=Chèn+Ảnh+Chung+Của+Nhóm+Vào+Đây+(nhom.jpg)'">
+                <p class="text-sm text-[#554A3E] mt-3 italic">"HỌC, HỌC NỮA, HỌC MÃI"</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="bg-[#FFFDF9] p-6 rounded-xl shadow-md border-2 border-[#E5D5C0]">
+                    <h3 class="text-xl font-bold text-[#8C2318] mb-3">🎯 Mục Đích Thành Lập</h3>
+                    <ul class="space-y-2 text-[#554A3E] text-sm leading-relaxed list-disc list-inside">
+                        <li>Tạo không gian chung để lưu trữ và quản lý tài liệu học tập của nhóm.</li>
+                        <li>Giúp mọi người dễ dàng tra cứu bài tập và tiến độ của nhóm.</li>
+                        <li>Xây dựng một không gian sáng tạo mang dấu ấn riêng.</li>
+                    </ul>
+                </div>
+
+                <div class="bg-[#FFFDF9] p-6 rounded-xl shadow-md border-2 border-[#E5D5C0]">
+                    <h3 class="text-xl font-bold text-[#2A7B72] mb-3">💡 Hướng Dẫn Sử Dụng</h3>
+                    <ul class="space-y-2 text-[#554A3E] text-sm leading-relaxed list-disc list-inside">
+                        <li><strong>Tab Giới Thiệu:</strong> Xem thông tin chung về nhóm.</li>
+                        <li><strong>Tab Thành Viên:</strong> Tìm hiểu chi tiết về từng thành viên.</li>
+                        <li><strong>Tab Kho Bài Tập:</strong> Tìm kiếm, tra cứu và xem toàn bộ nội dung bài tập đã nộp.</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- TAB 2: GIỚI THIỆU THÀNH VIÊN -->
+        <section id="tab-members" class="hidden space-y-8">
+            <div class="flex justify-between items-center max-w-[1150px] mx-auto border-b border-[#E5D5C0] pb-4">
+                <button onclick="switchTab('about')" class="flex items-center space-x-2 px-3 py-1.5 bg-[#F3ECE0] text-[#8C2318] rounded-lg hover:bg-[#E5D5C0] transition text-sm font-semibold border border-[#D4A237]">
+                    <span>⬅ Quay về Trang Chủ</span>
+                </button>
+                <span class="text-xs text-[#554A3E] italic">Nhấp vào thẻ để xem thông tin chi tiết</span>
+            </div>
+
+            <div class="text-center mb-8">
+                <h2 class="text-3xl font-bold text-[#8C2318] tracking-wider">THÀNH VIÊN NHÓM</h2>
+                <div class="w-24 h-1 bg-[#D4A237] mx-auto my-2 rounded"></div>
+                <p class="text-[#554A3E] mt-1 italic">Danh sách các thành viên thực hiện dự án.</p>
+            </div>
+
+            <div class="member-grid">
+                <div class="card" onclick="openProfile('duyen')">
+                    <img src="duyen.jpg" alt="Võ Thị Kim Duyên" class="avatar" onerror="this.src='https://placehold.co/140x160/F3ECE0/2A7B72?text=Kim+Duyên'">
+                    <h3 class="name">Võ Thị Kim Duyên</h3>
+                    <p class="role">Thành viên</p>
+                    <p class="bio">Number 03</p>
+                </div>
+
+                <div class="card" onclick="openProfile('truc')">
+                    <img src="truc.jpg" alt="Lê Thanh Trúc" class="avatar" onerror="this.src='https://placehold.co/140x160/F3ECE0/2A7B72?text=Thanh+Trúc'">
+                    <h3 class="name">Lê Thanh Trúc</h3>
+                    <p class="role">Nhóm trưởng</p>
+                    <p class="bio">Number 16</p>
+                </div>
+
+                <div class="card" onclick="openProfile('chau')">
+                    <img src="chau.jpg" alt="Phạm Ngọc Châu" class="avatar" onerror="this.src='https://placehold.co/140x160/F3ECE0/2A7B72?text=Ngọc+Châu'">
+                    <h3 class="name">Phạm Ngọc Châu</h3>
+                    <p class="role">Nhóm trưởng</p>
+                    <p class="bio">Number 02</p>
+                </div>
+
+                <div class="card" onclick="openProfile('ty')">
+                    <img src="ty.jpg" alt="Đoàn Xuân Tỷ" class="avatar" onerror="this.src='https://placehold.co/140x160/F3ECE0/2A7B72?text=Xuân+Tỷ'">
+                    <h3 class="name">Đoàn Xuân Tỷ</h3>
+                    <p class="role">Nhóm trưởng</p>
+                    <p class="bio">Number 18</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- TAB 3: KHO BÀI TẬP -->
+        <section id="tab-assignments" class="hidden space-y-6 max-w-3xl mx-auto">
+            <div class="flex justify-between items-center border-b border-[#E5D5C0] pb-4">
+                <button onclick="switchTab('about')" class="flex items-center space-x-2 px-3 py-1.5 bg-[#F3ECE0] text-[#8C2318] rounded-lg hover:bg-[#E5D5C0] transition text-sm font-semibold border border-[#D4A237]">
+                    <span>⬅ Quay về Trang Chủ</span>
+                </button>
+                <span class="text-xs text-[#554A3E] italic">Danh sách bài tập chính thức</span>
+            </div>
+
+            <div class="text-center">
+                <h2 class="text-3xl font-bold text-[#8C2318] tracking-wider">KHO BÀI TẬP NHÓM</h2>
+                <div class="w-24 h-1 bg-[#D4A237] mx-auto my-2 rounded"></div>
+                <p class="text-[#554A3E] mt-1 italic">Tra cứu và xem toàn bộ nội dung bài tập đã nộp.</p>
+            </div>
+
+            <!-- Ô tìm kiếm bài tập -->
+            <div class="relative">
+                <input type="text" id="search-input" oninput="filterAssignments()" placeholder="🔍 Nhập tên bài tập để tìm kiếm..." class="w-full px-4 py-3 bg-[#FFFDF9] border-2 border-[#E5D5C0] rounded-xl shadow-sm focus:outline-none focus:border-[#2A7B72] text-sm text-[#554A3E]">
+            </div>
+
+            <!-- Danh sách bài tập hiển thị dạng list -->
+            <div id="assignments-list" class="space-y-4"></div>
+        </section>
+
+    </main>
+
+    <!-- MODAL POPUP XEM PROFILE CHI TIẾT THÀNH VIÊN -->
+    <div id="profile-modal" class="fixed inset-0 z-50 hidden flex items-center justify-center p-4 modal-backdrop" onclick="closeProfileOnBackdrop(event)">
+        <div class="bg-[#FFFDF9] border-4 border-[#C83E2B] outline outline-2 outline-[#D4A237] rounded-2xl max-w-lg w-full p-6 shadow-2xl relative transform transition-all" onclick="event.stopPropagation()">
+            <button onclick="closeProfile()" class="absolute top-3 right-3 text-[#8C2318] hover:text-[#C83E2B] text-2xl font-bold w-8 h-8 flex items-center justify-center rounded-full bg-[#F3ECE0] border border-[#D4A237]">&times;</button>
+            <div id="modal-content"></div>
+        </div>
+    </div>
+
+    <!-- MODAL POPUP XEM TOÀN BỘ NỘI DUNG BÀI TẬP -->
+    <div id="assignment-modal" class="fixed inset-0 z-50 hidden flex items-center justify-center p-4 modal-backdrop" onclick="closeAssignmentOnBackdrop(event)">
+        <div class="bg-[#FFFDF9] border-4 border-[#2A7B72] outline outline-2 outline-[#D4A237] rounded-2xl max-w-xl w-full p-6 shadow-2xl relative transform transition-all" onclick="event.stopPropagation()">
+            <button onclick="closeAssignmentModal()" class="absolute top-3 right-3 text-[#8C2318] hover:text-[#C83E2B] text-2xl font-bold w-8 h-8 flex items-center justify-center rounded-full bg-[#F3ECE0] border border-[#D4A237]">&times;</button>
+            <div id="assignment-modal-content"></div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-[#1A1A1A] text-[#E8BA5A] text-center py-4 mt-auto border-t-2 border-[#D4A237]">
+        <p class="text-sm">&copy; 2026 Quản lý bài tập nhóm. All rights reserved.</p>
+    </footer>
+
+    <!-- JavaScript xử lý logic -->
+    <script>
+        const memberProfiles = {
+            duyen: {
+                name: "Võ Thị Kim Duyên",
+                role: "Thành viên",
+                number: "Number 03",
+                email: "kimduyen090513@gmail.com",
+                avatar: "duyen.jpg",
+                fallback: "https://placehold.co/140x160/F3ECE0/2A7B72?text=Kim+Duyên",
+                quote: "Quyết tâm cùng nhóm hoàn thành xuất sắc các bài tập!"
+            },
+            truc: {
+                name: "Lê Thanh Trúc",
+                role: "Nhóm trưởng",
+                number: "Number 16",
+                email: "lethanhtrucbt09@gmail.com",
+                avatar: "truc.jpg",
+                fallback: "https://placehold.co/140x160/F3ECE0/2A7B72?text=Thanh+Trúc",
+                quote: "Đồng hành và hỗ trợ cả nhóm tiến bộ mỗi ngày."
+            },
+            chau: {
+                name: "Phạm Ngọc Châu",
+                role: "Nhóm trưởng",
+                number: "Number 02",
+                email: "phngchau03@gmail.com",
+                avatar: "chau.jpg",
+                fallback: "https://placehold.co/140x160/F3ECE0/2A7B72?text=Ngọc+Châu",
+                quote: "Học hết sức, chơi hết mình!"
+            },
+            ty: {
+                name: "Đoàn Xuân Tỷ",
+                role: "Nhóm trưởng",
+                number: "Number 18",
+                email: "doanxty@gmail.com",
+                avatar: "ty.jpg",
+                fallback: "https://placehold.co/140x160/F3ECE0/2A7B72?text=Xuân+Tỷ",
+                quote: "Kiên trì vượt qua mọi thử thách!"
+            }
+        };
+
+        function openProfile(key) {
+            const data = memberProfiles[key];
+            if (!data) return;
+
+            const modalContent = document.getElementById('modal-content');
+            modalContent.innerHTML = `
+                <div class="text-center">
+                    <img src="${data.avatar}" alt="${data.name}" class="avatar mx-auto mb-3" onerror="this.src='${data.fallback}'">
+                    <h3 class="text-2xl font-bold text-[#8C2318]">${data.name}</h3>
+                    <p class="text-xs font-bold text-[#2A7B72] uppercase tracking-wider mt-1">${data.role} • ${data.number}</p>
+                    <div class="w-16 h-0.5 bg-[#D4A237] mx-auto my-3"></div>
+                </div>
+
+                <div class="space-y-3 text-sm text-[#554A3E] mt-4">
+                    <div class="bg-[#FAF6EE] p-3 rounded-lg border border-[#E5D5C0]">
+                        <p class="font-bold text-[#8C2318]">📧 Email liên hệ:</p>
+                        <p class="text-xs font-mono text-[#2A7B72] mt-0.5">${data.email}</p>
+                    </div>
+
+                    <div class="text-center italic text-xs text-[#2A7B72] pt-2">
+                        "${data.quote}"
+                    </div>
+                </div>
+            `;
+            document.getElementById('profile-modal').classList.remove('hidden');
+        }
+
+        function closeProfile() {
+            document.getElementById('profile-modal').classList.add('hidden');
+        }
+
+        function closeProfileOnBackdrop(event) {
+            if (event.target.id === 'profile-modal') closeProfile();
+        }
+
+        function switchTab(tabName) {
+            const aboutSection = document.getElementById('tab-about');
+            const membersSection = document.getElementById('tab-members');
+            const assignmentsSection = document.getElementById('tab-assignments');
+            
+            const btnAbout = document.getElementById('btn-about');
+            const btnMembers = document.getElementById('btn-members');
+            const btnAssignments = document.getElementById('btn-assignments');
+
+            aboutSection.classList.add('hidden');
+            membersSection.classList.add('hidden');
+            assignmentsSection.classList.add('hidden');
+
+            [btnAbout, btnMembers, btnAssignments].forEach(btn => {
+                btn.classList.remove('bg-[#8C2318]', 'text-[#E8BA5A]', 'border', 'border-[#D4A237]');
+                btn.classList.add('hover:bg-[#8C2318]', 'hover:text-[#E8BA5A]');
+            });
+
+            if (tabName === 'about') {
+                aboutSection.classList.remove('hidden');
+                btnAbout.classList.add('bg-[#8C2318]', 'text-[#E8BA5A]', 'border', 'border-[#D4A237]');
+                btnAbout.classList.remove('hover:bg-[#8C2318]', 'hover:text-[#E8BA5A]');
+            } else if (tabName === 'members') {
+                membersSection.classList.remove('hidden');
+                btnMembers.classList.add('bg-[#8C2318]', 'text-[#E8BA5A]', 'border', 'border-[#D4A237]');
+                btnMembers.classList.remove('hover:bg-[#8C2318]', 'hover:text-[#E8BA5A]');
+            } else {
+                assignmentsSection.classList.remove('hidden');
+                btnAssignments.classList.add('bg-[#8C2318]', 'text-[#E8BA5A]', 'border', 'border-[#D4A237]');
+                btnAssignments.classList.remove('hover:bg-[#8C2318]', 'hover:text-[#E8BA5A]');
+            }
+        }
+
+        // DANH SÁCH BÀI TẬP CỦA NHÓM (Có thêm description để không bị hiện undefined)
+        const officialAssignments = [
+            {
+                title: "Bài 3: Một số thiết bị mạng thông dụng",
+                description: "Tài liệu tổng hợp nội dung chi tiết bài học và các khái niệm thiết bị mạng môn Tin học 12.",
+                link: "https://docs.google.com/document/d/1ML_TIpvT881BzNBsWUG_HpFmcY0qRh-HhR8WNhatYbE/edit?usp=sharing"
+            },
+            {
+                title: "Bài 4: Giao thức mạng",
+                description: "Nội dung bài tập và tài liệu tìm hiểu về các giao thức mạng phổ biến.",
+                link: "https://drive.google.com"
+            }
+        ];
+
+        function renderAssignments(filterText = '') {
+            const listContainer = document.getElementById('assignments-list');
+            listContainer.innerHTML = '';
+
+            const filtered = officialAssignments.filter(item => 
+                item.title.toLowerCase().includes(filterText.toLowerCase())
+            );
+
+            if (filtered.length === 0) {
+                listContainer.innerHTML = '<p class="text-[#554A3E] text-center py-6 bg-[#FFFDF9] rounded-xl border border-[#E5D5C0] italic">Không tìm thấy bài tập phù hợp.</p>';
+                return;
+            }
+
+            filtered.forEach((item) => {
+                const originalIndex = officialAssignments.indexOf(item);
+                const card = document.createElement('div');
+                card.className = 'bg-[#FFFDF9] p-5 rounded-xl shadow-sm border-2 border-[#E5D5C0] flex justify-between items-center transition hover:border-[#2A7B72]';
+
+                card.innerHTML = `
+                    <div class="pr-4">
+                        <h4 class="text-lg font-bold text-[#8C2318]">${item.title}</h4>
+                    </div>
+                    <button onclick="viewAssignment(${originalIndex})" class="px-4 py-2 bg-[#2A7B72] text-white text-xs font-bold rounded-lg hover:bg-[#1F5E56] transition shadow-sm whitespace-nowrap">
+                        Xem chi tiết
+                    </button>
+                `;
+                listContainer.appendChild(card);
+            });
+        }
+
+        function filterAssignments() {
+            const keyword = document.getElementById('search-input').value;
+            renderAssignments(keyword);
+        }
+
+        function viewAssignment(index) {
+            const item = officialAssignments[index];
+            const modalContent = document.getElementById('assignment-modal-content');
+            
+            modalContent.innerHTML = `
+                <div class="space-y-4">
+                    <div>
+                        <h3 class="text-2xl font-bold text-[#8C2318]">${item.title}</h3>
+                        <div class="w-16 h-0.5 bg-[#D4A237] my-3"></div>
+                    </div>
+                    
+                    ${item.description ? `
+                    <div class="bg-[#FAF6EE] p-4 rounded-xl border border-[#E5D5C0]">
+                        <p class="text-sm font-bold text-[#8C2318] mb-1">Mô tả chi tiết:</p>
+                        <p class="text-sm text-[#554A3E] leading-relaxed">${item.description}</p>
+                    </div>` : ''}
+
+                    <div class="pt-2 text-center">
+                        <a href="${item.link}" target="_blank" class="inline-flex items-center space-x-2 px-6 py-2.5 bg-[#C83E2B] text-white text-sm font-bold rounded-lg hover:bg-[#8C2318] transition shadow-md border border-[#D4A237]">
+                            <span>Mở / Tải Tài Liệu Đính Kèm</span>
+                        </a>
+                    </div>
+                </div>
+            `;
+            document.getElementById('assignment-modal').classList.remove('hidden');
+        }
+
+        function closeAssignmentModal() {
+            document.getElementById('assignment-modal').classList.add('hidden');
+        }
+
+        function closeAssignmentOnBackdrop(event) {
+            if (event.target.id === 'assignment-modal') closeAssignmentModal();
+        }
+
+        renderAssignments();
+    </script>
+</body>
+</html>
             `;
             document.getElementById('assignment-modal').classList.remove('hidden');
         }
