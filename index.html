@@ -160,7 +160,7 @@
                     <ul class="space-y-2 text-[#554A3E] text-sm leading-relaxed list-disc list-inside">
                         <li><strong>Tab Giới Thiệu:</strong> Xem thông tin chung về nhóm.</li>
                         <li><strong>Tab Thành Viên:</strong> Tìm hiểu chi tiết về từng thành viên.</li>
-                        <li><strong>Tab Kho Bài Tập:</strong> Tìm kiếm tên bài tập và xem toàn bộ nội dung tài liệu.</li>
+                        <li><strong>Tab Kho Bài Tập:</strong> Tìm kiếm, tra cứu và xem toàn bộ nội dung bài tập đã nộp.</li>
                     </ul>
                 </div>
             </div>
@@ -212,32 +212,32 @@
             </div>
         </section>
 
-        <!-- TAB 3: KHO BÀI TẬP (Chỉ tìm kiếm theo tên bài tập & xem chi tiết) -->
+        <!-- TAB 3: KHO BÀI TẬP (Có tìm kiếm + Danh sách dạng list + Xem chi tiết) -->
         <section id="tab-assignments" class="hidden space-y-6 max-w-3xl mx-auto">
             <div class="flex justify-between items-center border-b border-[#E5D5C0] pb-4">
                 <button onclick="switchTab('about')" class="flex items-center space-x-2 px-3 py-1.5 bg-[#F3ECE0] text-[#8C2318] rounded-lg hover:bg-[#E5D5C0] transition text-sm font-semibold border border-[#D4A237]">
                     <span>⬅ Quay về Trang Chủ</span>
                 </button>
-                <span class="text-xs text-[#554A3E] italic">Danh sách bài tập chung của nhóm</span>
+                <span class="text-xs text-[#554A3E] italic">Danh sách bài tập chính thức</span>
             </div>
 
             <div class="text-center">
                 <h2 class="text-3xl font-bold text-[#8C2318] tracking-wider">KHO BÀI TẬP NHÓM</h2>
                 <div class="w-24 h-1 bg-[#D4A237] mx-auto my-2 rounded"></div>
-                <p class="text-[#554A3E] mt-1 italic">Tra cứu theo tên bài tập và xem toàn bộ nội dung tài liệu.</p>
+                <p class="text-[#554A3E] mt-1 italic">Tra cứu và xem toàn bộ nội dung bài tập đã nộp.</p>
             </div>
 
             <!-- Ô tìm kiếm bài tập -->
             <div class="relative">
-                <input type="text" id="search-input" oninput="filterAssignments()" placeholder="🔍 Nhập tên bài tập để tìm kiếm..." class="w-full px-4 py-3 bg-[#FFFDF9] border-2 border-[#E5D5C0] rounded-xl shadow-sm focus:outline-none focus:border-[#2A7B72] text-sm text-[#554A3E]">
+                <input type="text" id="search-input" oninput="filterAssignments()" placeholder="🔍 Nhập tên bài tập hoặc tên thành viên để tìm kiếm..." class="w-full px-4 py-3 bg-[#FFFDF9] border-2 border-[#E5D5C0] rounded-xl shadow-sm focus:outline-none focus:border-[#2A7B72] text-sm text-[#554A3E]">
             </div>
 
-            <!-- Danh sách bài tập hiển thị dạng list gọn gàng -->
+            <!-- Danh sách bài tập hiển thị dạng list -->
             <div id="assignments-list" class="space-y-4"></div>
         </section>
 
     </main>
-
+    
     <!-- MODAL POPUP XEM PROFILE CHI TIẾT THÀNH VIÊN -->
     <div id="profile-modal" class="fixed inset-0 z-50 hidden flex items-center justify-center p-4 modal-backdrop" onclick="closeProfileOnBackdrop(event)">
         <div class="bg-[#FFFDF9] border-4 border-[#C83E2B] outline outline-2 outline-[#D4A237] rounded-2xl max-w-lg w-full p-6 shadow-2xl relative transform transition-all" onclick="event.stopPropagation()">
