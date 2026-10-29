@@ -7,14 +7,12 @@
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
-        /* Font chữ Serif mang phong cách hoài cổ, nghệ thuật */
         body {
             font-family: "Times New Roman", Times, Georgia, serif;
-            background-color: #FAF6EE; /* Màu nền giấy kem xuyến chỉ */
+            background-color: #FAF6EE;
             color: #1A1A1A;
         }
 
-        /* Lưới 4 thành viên */
         .member-grid {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
@@ -23,7 +21,6 @@
             margin: 0 auto;
         }
 
-        /* Thẻ thành viên phong cách Vintage */
         .card {
             background: #FFFDF9;
             border: 2px solid #E5D5C0;
@@ -44,7 +41,6 @@
             border-color: #2A7B72;
         }
 
-        /* Khung ảnh chân dung cổ điển */
         .avatar {
             width: 140px;
             height: 160px;
@@ -63,7 +59,6 @@
             transform: scale(1.03);
         }
 
-        /* Khung ảnh chung của nhóm (Ảnh tập thể to) */
         .group-photo {
             width: 100%;
             max-height: 450px;
@@ -91,28 +86,6 @@
             letter-spacing: 1px;
         }
 
-        .bio {
-            font-size: 14px;
-            color: #554A3E;
-            margin-bottom: 20px;
-            flex-grow: 1;
-        }
-
-        .email-link {
-            font-size: 13px;
-            color: #2A7B72;
-            text-decoration: none;
-            word-break: break-all;
-            padding-top: 12px;
-            border-top: 1px dashed #E5D5C0;
-            width: 100%;
-            font-family: sans-serif;
-        }
-
-        .email-link:hover {
-            color: #C83E2B;
-        }
-
         .modal-backdrop {
             background-color: rgba(26, 26, 26, 0.65);
             backdrop-filter: blur(4px);
@@ -133,11 +106,10 @@
 </head>
 <body class="min-h-screen flex flex-col">
 
-    <!-- Header & Navigation có thêm LOGO nhóm -->
+    <!-- Header & Navigation -->
     <header class="bg-[#C83E2B] text-[#FFFDF9] shadow-md border-b-4 border-[#D4A237]">
         <div class="container mx-auto px-4 py-3 flex flex-wrap justify-between items-center gap-2">
             
-            <!-- Cụm Logo + Tên Portal -->
             <div class="flex items-center space-x-3 cursor-pointer" onclick="switchTab('about')">
                 <img src="logo.png" 
                      alt="Logo Nhóm" 
@@ -148,11 +120,10 @@
                 </div>
             </div>
 
-            <!-- Thanh Menu chuyển Tab -->
             <nav class="space-x-1 sm:space-x-2">
                 <button onclick="switchTab('about')" id="btn-about" class="px-3 py-2 rounded-lg bg-[#8C2318] text-[#E8BA5A] font-bold border border-[#D4A237] transition text-sm sm:text-base">Trang Chủ</button>
                 <button onclick="switchTab('members')" id="btn-members" class="px-3 py-2 rounded-lg hover:bg-[#8C2318] hover:text-[#E8BA5A] font-medium transition text-sm sm:text-base">Thành Viên</button>
-                <button onclick="switchTab('assignments')" id="btn-assignments" class="px-3 py-2 rounded-lg hover:bg-[#8C2318] hover:text-[#E8BA5A] font-medium transition text-sm sm:text-base">Nộp Bài Tập</button>
+                <button onclick="switchTab('assignments')" id="btn-assignments" class="px-3 py-2 rounded-lg hover:bg-[#8C2318] hover:text-[#E8BA5A] font-medium transition text-sm sm:text-base">Kho Bài Tập</button>
             </nav>
 
         </div>
@@ -178,18 +149,18 @@
                 <div class="bg-[#FFFDF9] p-6 rounded-xl shadow-md border-2 border-[#E5D5C0]">
                     <h3 class="text-xl font-bold text-[#8C2318] mb-3">🎯 Mục Đích Thành Lập</h3>
                     <ul class="space-y-2 text-[#554A3E] text-sm leading-relaxed list-disc list-inside">
-                        <li>Tạo không gian chung để lưu trữ và quản lý tài liệu học tập của nhóm[cite: 1].</li>
-                        <li>Giúp các thành viên dễ dàng nộp bài, xem lại tiến độ và hỗ trợ nhau ôn tập[cite: 1]</li>
-                        <li>Xây dựng một không gian sáng tạo mang dấu ấn riêng phục vụ cho các hoạt động học tập[cite: 1]</li>
+                        <li>Tạo không gian chung để lưu trữ và quản lý tài liệu học tập của nhóm.</li>
+                        <li>Giúp mọi người dễ dàng tra cứu bài tập và tiến độ của nhóm.</li>
+                        <li>Xây dựng một không gian sáng tạo mang dấu ấn riêng.</li>
                     </ul>
                 </div>
 
                 <div class="bg-[#FFFDF9] p-6 rounded-xl shadow-md border-2 border-[#E5D5C0]">
                     <h3 class="text-xl font-bold text-[#2A7B72] mb-3">💡 Hướng Dẫn Sử Dụng</h3>
                     <ul class="space-y-2 text-[#554A3E] text-sm leading-relaxed list-disc list-inside">
-                        <li><strong>Tab Giới Thiệu:</strong> Xem thông tin chung[cite: 1]</li>
-                        <li><strong>Tab Thành Viên:</strong> Tìm hiểu về các thành viên trong nhóm[cite: 1]</li>
-                        <li><strong>Tab Nộp Bài Tập:</strong> Dán link tài liệu/Google Drive, ghi chú chi tiết và dễ dàng chỉnh sửa/xóa khi cần[cite: 1]</li>
+                        <li><strong>Tab Giới Thiệu:</strong> Xem thông tin chung về nhóm.</li>
+                        <li><strong>Tab Thành Viên:</strong> Tìm hiểu chi tiết về từng thành viên.</li>
+                        <li><strong>Tab Kho Bài Tập:</strong> Tìm kiếm tên bài tập và xem toàn bộ nội dung tài liệu.</li>
                     </ul>
                 </div>
             </div>
@@ -207,11 +178,10 @@
             <div class="text-center mb-8">
                 <h2 class="text-3xl font-bold text-[#8C2318] tracking-wider">THÀNH VIÊN NHÓM</h2>
                 <div class="w-24 h-1 bg-[#D4A237] mx-auto my-2 rounded"></div>
-                <p class="text-[#554A3E] mt-1 italic">Danh sách các thành viên thực hiện dự án[cite: 1].</p>
+                <p class="text-[#554A3E] mt-1 italic">Danh sách các thành viên thực hiện dự án.</p>
             </div>
 
             <div class="member-grid">
-                <!-- THÀNH VIÊN 1: KIM DUYÊN -->
                 <div class="card" onclick="openProfile('duyen')">
                     <img src="duyen.jpg" alt="Võ Thị Kim Duyên" class="avatar" onerror="this.src='https://placehold.co/140x160/F3ECE0/2A7B72?text=Kim+Duyên'">
                     <h3 class="name">Võ Thị Kim Duyên</h3>
@@ -219,7 +189,6 @@
                     <p class="bio">Number 03</p>
                 </div>
 
-                <!-- THÀNH VIÊN 2: THANH TRÚC -->
                 <div class="card" onclick="openProfile('truc')">
                     <img src="truc.jpg" alt="Lê Thanh Trúc" class="avatar" onerror="this.src='https://placehold.co/140x160/F3ECE0/2A7B72?text=Thanh+Trúc'">
                     <h3 class="name">Lê Thanh Trúc</h3>
@@ -227,7 +196,6 @@
                     <p class="bio">Number 16</p>
                 </div>
 
-                <!-- THÀNH VIÊN 3: NGỌC CHÂU -->
                 <div class="card" onclick="openProfile('chau')">
                     <img src="chau.jpg" alt="Phạm Ngọc Châu" class="avatar" onerror="this.src='https://placehold.co/140x160/F3ECE0/2A7B72?text=Ngọc+Châu'">
                     <h3 class="name">Phạm Ngọc Châu</h3>
@@ -235,7 +203,6 @@
                     <p class="bio">Number 02</p>
                 </div>
 
-                <!-- THÀNH VIÊN 4: XUÂN TỶ -->
                 <div class="card" onclick="openProfile('ty')">
                     <img src="ty.jpg" alt="Đoàn Xuân Tỷ" class="avatar" onerror="this.src='https://placehold.co/140x160/F3ECE0/2A7B72?text=Xuân+Tỷ'">
                     <h3 class="name">Đoàn Xuân Tỷ</h3>
@@ -245,61 +212,45 @@
             </div>
         </section>
 
-        <!-- TAB 3: UPLOAD & QUẢN LÝ BÀI TẬP -->
-        <section id="tab-assignments" class="hidden space-y-8">
-            <div class="flex justify-between items-center max-w-2xl mx-auto border-b border-[#E5D5C0] pb-4">
+        <!-- TAB 3: KHO BÀI TẬP (Chỉ tìm kiếm theo tên bài tập & xem chi tiết) -->
+        <section id="tab-assignments" class="hidden space-y-6 max-w-3xl mx-auto">
+            <div class="flex justify-between items-center border-b border-[#E5D5C0] pb-4">
                 <button onclick="switchTab('about')" class="flex items-center space-x-2 px-3 py-1.5 bg-[#F3ECE0] text-[#8C2318] rounded-lg hover:bg-[#E5D5C0] transition text-sm font-semibold border border-[#D4A237]">
                     <span>⬅ Quay về Trang Chủ</span>
                 </button>
-                <span class="text-xs text-[#554A3E] italic">Kho bài tập & tài liệu nhóm</span>
+                <span class="text-xs text-[#554A3E] italic">Danh sách bài tập chung của nhóm</span>
             </div>
 
             <div class="text-center">
                 <h2 class="text-3xl font-bold text-[#8C2318] tracking-wider">KHO BÀI TẬP NHÓM</h2>
                 <div class="w-24 h-1 bg-[#D4A237] mx-auto my-2 rounded"></div>
-                <p class="text-[#554A3E] mt-1 italic">Đăng tải, chỉnh sửa và xem lại các bài tập đã nộp[cite: 1].</p>
+                <p class="text-[#554A3E] mt-1 italic">Tra cứu theo tên bài tập và xem toàn bộ nội dung tài liệu.</p>
             </div>
 
-            <div class="bg-[#FFFDF9] p-6 rounded-xl shadow-md max-w-2xl mx-auto border-2 border-[#E5D5C0]">
-                <h3 id="form-title" class="text-xl font-bold mb-4 text-[#2A7B72]">Thêm Bài Tập Mới</h3>
-                <form id="assignment-form" onsubmit="handleFormSubmit(event)" class="space-y-4">
-                    <input type="hidden" id="edit-index" value="">
-                    <div>
-                        <label class="block text-sm font-semibold text-[#554A3E]">Tên bài tập / Tiêu đề</label>
-                        <input type="text" id="title" required class="mt-1 block w-full px-3 py-2 bg-[#FAF6EE] border border-[#E5D5C0] rounded-md shadow-sm focus:outline-none focus:border-[#2A7B72]">
-                    </div>
-                    <div>
-                        <label class="block text-sm font-semibold text-[#554A3E]">Tên thành viên nộp</label>
-                        <input type="text" id="author" required class="mt-1 block w-full px-3 py-2 bg-[#FAF6EE] border border-[#E5D5C0] rounded-md shadow-sm focus:outline-none focus:border-[#2A7B72]">
-                    </div>
-                    <div>
-                        <label class="block text-sm font-semibold text-[#554A3E]">Mô tả chi tiết</label>
-                        <textarea id="description" rows="3" required class="mt-1 block w-full px-3 py-2 bg-[#FAF6EE] border border-[#E5D5C0] rounded-md shadow-sm focus:outline-none focus:border-[#2A7B72]"></textarea>
-                    </div>
-                    <div>
-                        <label class="block text-sm font-semibold text-[#554A3E]">Link tài liệu / Google Drive (Word, PDF, Ảnh...)</label>
-                        <input type="url" id="image-input" placeholder="https://..." class="mt-1 block w-full px-3 py-2 bg-[#FAF6EE] border border-[#E5D5C0] rounded-md shadow-sm focus:outline-none focus:border-[#2A7B72]">
-                    </div>
-                    <div class="flex space-x-3">
-                        <button type="submit" id="submit-btn" class="w-full bg-[#C83E2B] text-white py-2 px-4 rounded-md hover:bg-[#8C2318] transition font-bold border border-[#D4A237]">Đăng Bài Tập</button>
-                        <button type="button" id="cancel-edit-btn" onclick="resetForm()" class="hidden w-1/3 bg-[#E5D5C0] text-[#554A3E] py-2 px-4 rounded-md hover:bg-[#d5c3aa] transition font-medium">Hủy</button>
-                    </div>
-                </form>
+            <!-- Ô tìm kiếm bài tập -->
+            <div class="relative">
+                <input type="text" id="search-input" oninput="filterAssignments()" placeholder="🔍 Nhập tên bài tập để tìm kiếm..." class="w-full px-4 py-3 bg-[#FFFDF9] border-2 border-[#E5D5C0] rounded-xl shadow-sm focus:outline-none focus:border-[#2A7B72] text-sm text-[#554A3E]">
             </div>
 
-            <div class="mt-8 max-w-4xl mx-auto">
-                <h3 class="text-2xl font-bold mb-4 text-[#8C2318]">Danh Sách Bài Tập Đã Nộp</h3>
-                <div id="assignments-list" class="grid grid-cols-1 md:grid-cols-2 gap-6"></div>
-            </div>
+            <!-- Danh sách bài tập hiển thị dạng list gọn gàng -->
+            <div id="assignments-list" class="space-y-4"></div>
         </section>
 
     </main>
 
-    <!-- MODAL POPUP XEM PROFILE CHI TIẾT TỪNG THÀNH VIÊN -->
+    <!-- MODAL POPUP XEM PROFILE CHI TIẾT THÀNH VIÊN -->
     <div id="profile-modal" class="fixed inset-0 z-50 hidden flex items-center justify-center p-4 modal-backdrop" onclick="closeProfileOnBackdrop(event)">
         <div class="bg-[#FFFDF9] border-4 border-[#C83E2B] outline outline-2 outline-[#D4A237] rounded-2xl max-w-lg w-full p-6 shadow-2xl relative transform transition-all" onclick="event.stopPropagation()">
             <button onclick="closeProfile()" class="absolute top-3 right-3 text-[#8C2318] hover:text-[#C83E2B] text-2xl font-bold w-8 h-8 flex items-center justify-center rounded-full bg-[#F3ECE0] border border-[#D4A237]">&times;</button>
             <div id="modal-content"></div>
+        </div>
+    </div>
+
+    <!-- MODAL POPUP XEM TOÀN BỘ NỘI DUNG BÀI TẬP -->
+    <div id="assignment-modal" class="fixed inset-0 z-50 hidden flex items-center justify-center p-4 modal-backdrop" onclick="closeAssignmentOnBackdrop(event)">
+        <div class="bg-[#FFFDF9] border-4 border-[#2A7B72] outline outline-2 outline-[#D4A237] rounded-2xl max-w-xl w-full p-6 shadow-2xl relative transform transition-all" onclick="event.stopPropagation()">
+            <button onclick="closeAssignmentModal()" class="absolute top-3 right-3 text-[#8C2318] hover:text-[#C83E2B] text-2xl font-bold w-8 h-8 flex items-center justify-center rounded-full bg-[#F3ECE0] border border-[#D4A237]">&times;</button>
+            <div id="assignment-modal-content"></div>
         </div>
     </div>
 
@@ -373,7 +324,6 @@
                     </div>
                 </div>
             `;
-
             document.getElementById('profile-modal').classList.remove('hidden');
         }
 
@@ -382,9 +332,7 @@
         }
 
         function closeProfileOnBackdrop(event) {
-            if (event.target.id === 'profile-modal') {
-                closeProfile();
-            }
+            if (event.target.id === 'profile-modal') closeProfile();
         }
 
         function switchTab(tabName) {
@@ -420,99 +368,120 @@
             }
         }
 
-        let assignments = JSON.parse(localStorage.getItem('assignments')) || [];
+        // DANH SÁCH BÀI TẬP CỦA NHÓM (Chỉ cần tên bài, mô tả và link)
+        const officialAssignments = [
+            {
+                title: "Bài 3: Một số thiết bị mạng thông dụng",
+                link: "https://docs.google.com/document/d/1ML_TIpvT881BzNBsWUG_HpFmcY0qRh-HhR8WNhatYbE/edit?usp=sharing"
+            },
+            {
+                title: "Bài 4: Giao thức mạng",
+                link: "https://drive.google.com"
+            }
+            {
+                title: "Tên bài tập hoặc tài liệu mới ở đây",
+                link: "Đường link Google Drive chứa file tài liệu (Word, PDF, v.v.)"
+            },
+            {
+                title: "Tên bài tập hoặc tài liệu mới ở đây",
+                link: "Đường link Google Drive chứa file tài liệu (Word, PDF, v.v.)"
+            },
+                {
+                title: "Tên bài tập hoặc tài liệu mới ở đây",
+                link: "Đường link Google Drive chứa file tài liệu (Word, PDF, v.v.)"
+            },
+                    {
+                title: "Tên bài tập hoặc tài liệu mới ở đây",
+                link: "Đường link Google Drive chứa file tài liệu (Word, PDF, v.v.)"
+            },
+                        {
+                title: "Tên bài tập hoặc tài liệu mới ở đây",
+                link: "Đường link Google Drive chứa file tài liệu (Word, PDF, v.v.)"
+            },
+                            {
+                title: "Tên bài tập hoặc tài liệu mới ở đây",
+                link: "Đường link Google Drive chứa file tài liệu (Word, PDF, v.v.)"
+            },
+                                {
+                title: "Tên bài tập hoặc tài liệu mới ở đây",
+                link: "Đường link Google Drive chứa file tài liệu (Word, PDF, v.v.)"
+            },
+                                    {
+                title: "Tên bài tập hoặc tài liệu mới ở đây",
+                link: "Đường link Google Drive chứa file tài liệu (Word, PDF, v.v.)"
+            },
+                                        
+        ];
 
-        function saveToLocalStorage() {
-            localStorage.setItem('assignments', JSON.stringify(assignments));
-        }
-
-        function renderAssignments() {
+        // Hàm hiển thị danh sách bài tập (có hỗ trợ tìm kiếm theo tên bài)
+        function renderAssignments(filterText = '') {
             const listContainer = document.getElementById('assignments-list');
             listContainer.innerHTML = '';
 
-            if (assignments.length === 0) {
-                listContainer.innerHTML = '<p class="text-[#554A3E] col-span-2 text-center py-6 bg-[#FFFDF9] rounded-xl border border-[#E5D5C0] italic">Chưa có bài tập nào được đăng tải.</p>';
+            const filtered = officialAssignments.filter(item => 
+                item.title.toLowerCase().includes(filterText.toLowerCase())
+            );
+
+            if (filtered.length === 0) {
+                listContainer.innerHTML = '<p class="text-[#554A3E] text-center py-6 bg-[#FFFDF9] rounded-xl border border-[#E5D5C0] italic">Không tìm thấy bài tập phù hợp.</p>';
                 return;
             }
 
-            assignments.forEach((item, index) => {
+            filtered.forEach((item) => {
+                const originalIndex = officialAssignments.indexOf(item);
                 const card = document.createElement('div');
-                card.className = 'bg-[#FFFDF9] p-6 rounded-xl shadow-md flex flex-col justify-between space-y-4 border-2 border-[#E5D5C0]';
+                card.className = 'bg-[#FFFDF9] p-5 rounded-xl shadow-sm border-2 border-[#E5D5C0] flex justify-between items-center transition hover:border-[#2A7B72]';
 
                 card.innerHTML = `
-                    <div>
-                        <div class="flex justify-between items-start">
-                            <h4 class="text-xl font-bold text-[#8C2318]">${item.title}</h4>
-                            <span class="text-xs bg-[#F3ECE0] text-[#2A7B72] px-2.5 py-1 rounded-full font-bold border border-[#D4A237]">Bởi: ${item.author}</span>
-                        </div>
-                        <p class="text-[#554A3E] mt-2 text-sm">${item.description}</p>
+                    <div class="pr-4">
+                        <h4 class="text-lg font-bold text-[#8C2318]">${item.title}</h4>
                     </div>
-                    ${item.image ? `<div class="mt-2"><a href="${item.image}" target="_blank" class="inline-flex items-center space-x-2 px-4 py-2 bg-[#2A7B72] text-white text-xs font-bold rounded-lg hover:bg-[#1F5E56] transition shadow-sm"><span>📥 Mở / Tải Tài Liệu Đính Kèm</span></a></div>` : ''}
-                    <div class="flex justify-end space-x-2 pt-2 border-t border-[#E5D5C0]">
-                        <button onclick="editAssignment(${index})" class="px-3 py-1 bg-[#2A7B72] text-white text-sm rounded hover:bg-[#1F5E56] transition font-semibold">Chỉnh sửa</button>
-                        <button onclick="deleteAssignment(${index})" class="px-3 py-1 bg-[#C83E2B] text-white text-sm rounded hover:bg-[#8C2318] transition font-semibold">Xóa</button>
-                    </div>
+                    <button onclick="viewAssignment(${originalIndex})" class="px-4 py-2 bg-[#2A7B72] text-white text-xs font-bold rounded-lg hover:bg-[#1F5E56] transition shadow-sm whitespace-nowrap">
+                        Xem chi tiết
+                    </button>
                 `;
                 listContainer.appendChild(card);
             });
         }
 
-        function handleFormSubmit(event) {
-            event.preventDefault();
-
-            const title = document.getElementById('title').value;
-            const author = document.getElementById('author').value;
-            const description = document.getElementById('description').value;
-            const linkUrl = document.getElementById('image-input').value;
-            const editIndex = document.getElementById('edit-index').value;
-
-            const newItem = {
-                title,
-                author,
-                description,
-                image: linkUrl || (editIndex !== '' ? assignments[editIndex].image : '')
-            };
-
-            if (editIndex === '') {
-                assignments.push(newItem);
-            } else {
-                assignments[editIndex] = newItem;
-            }
-
-            saveToLocalStorage();
-            renderAssignments();
-            resetForm();
+        // Hàm lọc khi gõ tìm kiếm
+        function filterAssignments() {
+            const keyword = document.getElementById('search-input').value;
+            renderAssignments(keyword);
         }
 
-        function editAssignment(index) {
-            const item = assignments[index];
-            document.getElementById('title').value = item.title;
-            document.getElementById('author').value = item.author;
-            document.getElementById('description').value = item.description;
-            document.getElementById('edit-index').value = index;
-            document.getElementById('image-input').value = item.image || '';
+        // Mở popup xem toàn bộ nội dung bài tập
+        function viewAssignment(index) {
+            const item = officialAssignments[index];
+            const modalContent = document.getElementById('assignment-modal-content');
+            modalContent.innerHTML = `
+                <div class="space-y-4">
+                    <div>
+                        <h3 class="text-2xl font-bold text-[#8C2318]">${item.title}</h3>
+                        <div class="w-16 h-0.5 bg-[#D4A237] my-3"></div>
+                    </div>
+                    
+                    <div class="bg-[#FAF6EE] p-4 rounded-xl border border-[#E5D5C0]">
+                        <p class="text-sm font-bold text-[#8C2318] mb-1">Mô tả chi tiết:</p>
+                        <p class="text-sm text-[#554A3E] leading-relaxed">${item.description}</p>
+                    </div>
 
-            document.getElementById('form-title').innerText = 'Chỉnh Sửa Bài Tập';
-            document.getElementById('submit-btn').innerText = 'Cập Nhật Bài Tập';
-            document.getElementById('cancel-edit-btn').classList.remove('hidden');
-
-            window.scrollTo({ top: 200, behavior: 'smooth' });
+                    <div class="pt-2 text-center">
+                        <a href="${item.link}" target="_blank" class="inline-flex items-center space-x-2 px-6 py-2.5 bg-[#C83E2B] text-white text-sm font-bold rounded-lg hover:bg-[#8C2318] transition shadow-md border border-[#D4A237]">
+                            <span> Mở / Tải Tài Liệu Đính Kèm</span>
+                        </a>
+                    </div>
+                </div>
+            `;
+            document.getElementById('assignment-modal').classList.remove('hidden');
         }
 
-        function deleteAssignment(index) {
-            if (confirm('Bạn có chắc chắn muốn xóa bài tập này không?')) {
-                assignments.splice(index, 1);
-                saveToLocalStorage();
-                renderAssignments();
-            }
+        function closeAssignmentModal() {
+            document.getElementById('assignment-modal').classList.add('hidden');
         }
 
-        function resetForm() {
-            document.getElementById('assignment-form').reset();
-            document.getElementById('edit-index').value = '';
-            document.getElementById('form-title').innerText = 'Thêm Bài Tập Mới';
-            document.getElementById('submit-btn').innerText = 'Đăng Bài Tập';
-            document.getElementById('cancel-edit-btn').classList.add('hidden');
+        function closeAssignmentOnBackdrop(event) {
+            if (event.target.id === 'assignment-modal') closeAssignmentModal();
         }
 
         renderAssignments();
