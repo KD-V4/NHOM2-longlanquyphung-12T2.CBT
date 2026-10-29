@@ -122,6 +122,30 @@
             .member-grid {
                 grid-template-columns: 1fr;
             }
+        .card {
+            background: #FFFDF9;
+            border: 2px solid #E5D5C0;
+            border-radius: 14px;
+            padding: 28px 20px;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            box-shadow: 0 4px 12px rgba(200, 62, 43, 0.08);
+            transition: transform 0.2s, box-shadow 0.2s;
+            cursor: pointer; /* Hiện bàn tay khi rê chuột vào bất kỳ đâu trên thẻ */
+        }
+
+        .card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 18px rgba(42, 123, 114, 0.2);
+            border-color: #2A7B72;
+        }
+
+        /* Hiệu ứng nhún nhẹ xuống khi người dùng chạm/bấm vào thẻ */
+        .card:active {
+            transform: translateY(0px) scale(0.98);
+        }
         }
     </style>
 </head>
@@ -178,8 +202,8 @@
                     <h3 class="text-xl font-bold text-[#8C2318] mb-3">🎯 Mục Đích Thành Lập</h3>
                     <ul class="space-y-2 text-[#554A3E] text-sm leading-relaxed list-disc list-inside">
                         <li>Tạo không gian chung để lưu trữ và quản lý tài liệu học tập của nhóm.</li>
-                        <li>Giúp các thành viên dễ dàng nộp bài, xem lại tiến độ và hỗ trợ nhau ôn tập[cite: 1].</li>
-                        <li>Xây dựng một không gian sáng tạo mang dấu ấn riêng phục vụ cho các hoạt động học tập[cite: 1].</li>
+                        <li>Giúp các thành viên dễ dàng nộp bài, xem lại tiến độ và hỗ trợ nhau ôn tập</li>
+                        <li>Xây dựng một không gian sáng tạo mang dấu ấn riêng phục vụ cho các hoạt động học tập</li>
                     </ul>
                 </div>
 
@@ -187,9 +211,9 @@
                 <div class="bg-[#FFFDF9] p-6 rounded-xl shadow-md border-2 border-[#E5D5C0]">
                     <h3 class="text-xl font-bold text-[#2A7B72] mb-3">💡 Hướng Dẫn Sử Dụng</h3>
                     <ul class="space-y-2 text-[#554A3E] text-sm leading-relaxed list-disc list-inside">
-                        <li><strong>Tab Giới Thiệu:</strong> Xem thông tin chung [cite: 1].</li>
-                        <li><strong>Tab Thành Viên:</strong> Tìm hiểu về các thành viên trong nhóm[cite: 1].</li>
-                        <li><strong>Tab Nộp Bài Tập:</strong> Tải ảnh bài tập lên, ghi chú chi tiết và dễ dàng chỉnh sửa/xóa khi cần[cite: 1].</li>
+                        <li><strong>Tab Giới Thiệu:</strong> Xem thông tin chung</li>
+                        <li><strong>Tab Thành Viên:</strong> Tìm hiểu về các thành viên trong nhóm</li>
+                        <li><strong>Tab Nộp Bài Tập:</strong> Tải ảnh bài tập lên, ghi chú chi tiết và dễ dàng chỉnh sửa/xóa khi cần</li>
                     </ul>
                 </div>
             </div>
@@ -209,7 +233,9 @@
                     <img src="duyen.jpg" alt="Võ Thị Kim Duyên" class="avatar" onerror="this.src='https://placehold.co/140x160/F3ECE0/2A7B72?text=Kim+Duyên'">
                     <h3 class="name">Võ Thị Kim Duyên</h3>
                     <p class="role">Thành viên</p>
-                    <p class="bio">thêm phần KD muốn ghi vô đây</p>
+                    <p class="bio">Number 03</p>
+                </div>
+            </div>
                     <button class="w-full py-2 px-3 bg-[#C83E2B] text-white text-xs font-bold rounded-md hover:bg-[#8C2318] transition border border-[#D4A237] shadow-sm mt-auto">🔍 Xem Hồ Sơ Chi Tiết</button>
                 </div>
 
@@ -218,7 +244,7 @@
                     <img src="truc.jpg" alt="Lê Thanh Trúc" class="avatar" onerror="this.src='https://placehold.co/140x160/F3ECE0/2A7B72?text=Thanh+Trúc'">
                     <h3 class="name">Lê Thanh Trúc</h3>
                     <p class="role">Nhóm trưởng</p>
-                    <p class="bio">thêm phần Trúc muốn ghi vô đây nè</p>
+                    <p class="bio">Number 16</p>
                     <button class="w-full py-2 px-3 bg-[#C83E2B] text-white text-xs font-bold rounded-md hover:bg-[#8C2318] transition border border-[#D4A237] shadow-sm mt-auto">🔍 Xem Hồ Sơ Chi Tiết</button>
                 </div>
 
@@ -227,7 +253,7 @@
                     <img src="chau.jpg" alt="Phạm Ngọc Châu" class="avatar" onerror="this.src='https://placehold.co/140x160/F3ECE0/2A7B72?text=Ngọc+Châu'">
                     <h3 class="name">Phạm Ngọc Châu</h3>
                     <p class="role">Nhóm trưởng</p>
-                    <p class="bio">thêm phần Châu muốn ghi vô đây nữa</p>
+                    <p class="bio">Number 02</p>
                     <button class="w-full py-2 px-3 bg-[#C83E2B] text-white text-xs font-bold rounded-md hover:bg-[#8C2318] transition border border-[#D4A237] shadow-sm mt-auto">🔍 Xem Hồ Sơ Chi Tiết</button>
                 </div>
 
@@ -236,7 +262,7 @@
                     <img src="ty.jpg" alt="Đoàn Xuân Tỷ" class="avatar" onerror="this.src='https://placehold.co/140x160/F3ECE0/2A7B72?text=Xuân+Tỷ'">
                     <h3 class="name">Đoàn Xuân Tỷ</h3>
                     <p class="role">Nhóm trưởng</p>
-                    <p class="bio">Thêm phần xty muốn ghi vô đâu nha</p>
+                   <p class="bio">Number 18</p>
                     <button class="w-full py-2 px-3 bg-[#C83E2B] text-white text-xs font-bold rounded-md hover:bg-[#8C2318] transition border border-[#D4A237] shadow-sm mt-auto">🔍 Xem Hồ Sơ Chi Tiết</button>
                 </div>
             </div>
